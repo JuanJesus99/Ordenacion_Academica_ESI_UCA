@@ -406,23 +406,43 @@ def menu_estudiante(update, context):
     
     dp.add_handler(CallbackQueryHandler(pattern='student_menu_spanish_go_back', callback=second_menu_spanish))
     
-    query = update.callback_query
-    query.answer()
-    query.edit_message_text(
-        text = ' *Bienvenido al bot de ayuda de la ESI*',
-        reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton(text='Noticias ESI', url='https://esingenieria.uca.es/noticia/')],
-            [InlineKeyboardButton(text='Horarios', callback_data='student_timetable'),InlineKeyboardButton(text='Calendarios de exámenes', callback_data='student_exam_calendar')],
-            [InlineKeyboardButton(text='TFG/M', callback_data='inicio_tfg'), InlineKeyboardButton(text='Tutorías', callback_data='student_start_tutorships')],
-            [InlineKeyboardButton(text='Evaluación global', callback_data='inicio_evaluacion_global'), InlineKeyboardButton(text='Llamamiento especial', callback_data='inicio_llamamiento_especial')],
-            [InlineKeyboardButton(text='Convocatoria diciembre', callback_data='inicio_conv_diciembre'),InlineKeyboardButton(text='Asignación de grupos', callback_data='inicio_group_assignment')],
-            [InlineKeyboardButton(text='Prácticas curriculares', callback_data='inicio_practicas_curriculares'), InlineKeyboardButton(text='Prácticas extracurriculares', callback_data='inicio_practicas_extracurriculares')],
-            [InlineKeyboardButton(text='Alumnos colaboradores', callback_data='student_collaborating_students'), InlineKeyboardButton(text='Evaluación por compensación', callback_data='inicio_compensacion')],
-            [InlineKeyboardButton(text='Web Ordenación Académica ESI', url='https://esingenieria.uca.es/ordenacion/')],
-            [InlineKeyboardButton(text='Volver', callback_data='student_menu_spanish_go_back')]
-        ]),
-        parse_mode='Markdown'
-    )
+    if(update.callback_query == None):
+
+        update.message.reply_text(
+            text = ' *Bienvenid@ al menu Estudiante*',
+            reply_markup = InlineKeyboardMarkup([
+                [InlineKeyboardButton(text='Noticias ESI', url='https://esingenieria.uca.es/noticia/')],
+                [InlineKeyboardButton(text='Horarios', callback_data='student_timetable'),InlineKeyboardButton(text='Calendarios de exámenes', callback_data='student_exam_calendar')],
+                [InlineKeyboardButton(text='TFG/M', callback_data='inicio_tfg'), InlineKeyboardButton(text='Tutorías', callback_data='student_start_tutorships')],
+                [InlineKeyboardButton(text='Evaluación global', callback_data='inicio_evaluacion_global'), InlineKeyboardButton(text='Llamamiento especial', callback_data='inicio_llamamiento_especial')],
+                [InlineKeyboardButton(text='Convocatoria diciembre', callback_data='inicio_conv_diciembre'),InlineKeyboardButton(text='Asignación de grupos', callback_data='inicio_group_assignment')],
+                [InlineKeyboardButton(text='Prácticas curriculares', callback_data='inicio_practicas_curriculares'), InlineKeyboardButton(text='Prácticas extracurriculares', callback_data='inicio_practicas_extracurriculares')],
+                [InlineKeyboardButton(text='Alumnos colaboradores', callback_data='student_collaborating_students'), InlineKeyboardButton(text='Evaluación por compensación', callback_data='inicio_compensacion')],
+                [InlineKeyboardButton(text='Web Ordenación Académica ESI', url='https://esingenieria.uca.es/ordenacion/')],
+                [InlineKeyboardButton(text='Volver', callback_data='student_menu_spanish_go_back')]
+            ]),
+            parse_mode='Markdown'
+        )
+    
+    else: 
+    
+        query = update.callback_query
+        query.answer()
+        query.edit_message_text(
+            text = ' *Bienvenid@ al menu Estudiante*',
+            reply_markup = InlineKeyboardMarkup([
+                [InlineKeyboardButton(text='Noticias ESI', url='https://esingenieria.uca.es/noticia/')],
+                [InlineKeyboardButton(text='Horarios', callback_data='student_timetable'),InlineKeyboardButton(text='Calendarios de exámenes', callback_data='student_exam_calendar')],
+                [InlineKeyboardButton(text='TFG/M', callback_data='inicio_tfg'), InlineKeyboardButton(text='Tutorías', callback_data='student_start_tutorships')],
+                [InlineKeyboardButton(text='Evaluación global', callback_data='inicio_evaluacion_global'), InlineKeyboardButton(text='Llamamiento especial', callback_data='inicio_llamamiento_especial')],
+                [InlineKeyboardButton(text='Convocatoria diciembre', callback_data='inicio_conv_diciembre'),InlineKeyboardButton(text='Asignación de grupos', callback_data='inicio_group_assignment')],
+                [InlineKeyboardButton(text='Prácticas curriculares', callback_data='inicio_practicas_curriculares'), InlineKeyboardButton(text='Prácticas extracurriculares', callback_data='inicio_practicas_extracurriculares')],
+                [InlineKeyboardButton(text='Alumnos colaboradores', callback_data='student_collaborating_students'), InlineKeyboardButton(text='Evaluación por compensación', callback_data='inicio_compensacion')],
+                [InlineKeyboardButton(text='Web Ordenación Académica ESI', url='https://esingenieria.uca.es/ordenacion/')],
+                [InlineKeyboardButton(text='Volver', callback_data='student_menu_spanish_go_back')]
+            ]),
+            parse_mode='Markdown'
+        )
 
 
 
@@ -445,7 +465,7 @@ def menu_PDI(update, context):
     if(update.callback_query == None):
         
         update.message.reply_text(
-            text = '*Bienvenido al bot de ayuda de la ESI para Profesores*',
+            text = '*Bienvenid@ al menu PDI*',
             reply_markup = InlineKeyboardMarkup([
                 [InlineKeyboardButton(text='Noticias ESI', url='https://esingenieria.uca.es/noticia/')],
                 [InlineKeyboardButton(text='Horarios', callback_data='pdi_timetable'), InlineKeyboardButton(text='Calendarios de exámenes', callback_data='pdi_exam_calendar')],
@@ -462,7 +482,7 @@ def menu_PDI(update, context):
         query = update.callback_query
         query.answer()
         query.edit_message_text(
-            text = '*Bienvenido al bot de ayuda de la ESI para Profesores*',
+            text = '*Bienvenid@ al menu PDI*',
             reply_markup = InlineKeyboardMarkup([
                 [InlineKeyboardButton(text='Noticias ESI', url='https://esingenieria.uca.es/noticia/')],
                 [InlineKeyboardButton(text='Horarios', callback_data='pdi_timetable'), InlineKeyboardButton(text='Calendarios de exámenes', callback_data='pdi_exam_calendar')],
@@ -498,12 +518,10 @@ def menu_PAS(update, context):
     #Prueba
     dp.add_handler(CallbackQueryHandler(pattern='consulta_sire', callback=consulta_sire))
 
-   
-    
-    query = update.callback_query
-    query.answer()
-    query.edit_message_text(
-        text = '*Bienvenido al bot de ayuda de la ESI para PAS*',
+    if(update.callback_query == None):
+
+        update.message.reply_text(
+            text = '*Bienvenid@ al menu PAS*',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Noticias ESI', url='https://esingenieria.uca.es/noticia/')],
             [InlineKeyboardButton(text='Horarios', callback_data='pas_timetable'), InlineKeyboardButton(text='Calendarios de exámenes', callback_data='pas_exam_calendar')],
@@ -516,6 +534,24 @@ def menu_PAS(update, context):
         ]),
         parse_mode='Markdown'
     )
+    
+    else:
+        query = update.callback_query
+        query.answer()
+        query.edit_message_text(
+            text = '*Bienvenid@ al menu PAS*',
+            reply_markup = InlineKeyboardMarkup([
+                [InlineKeyboardButton(text='Noticias ESI', url='https://esingenieria.uca.es/noticia/')],
+                [InlineKeyboardButton(text='Horarios', callback_data='pas_timetable'), InlineKeyboardButton(text='Calendarios de exámenes', callback_data='pas_exam_calendar')],
+                [InlineKeyboardButton(text='CAU de Infraestructuras', url='https://cau-infraestructuras.uca.es/cau/index.do')],
+                [InlineKeyboardButton(text='CAU de Reparación', url='https://cau-infraestructuras.uca.es/cau/grupoServicios.do?id=M01'),InlineKeyboardButton(text='CAU de Climatización', url='https://cau-infraestructuras.uca.es/cau/grupoServicios.do?id=M07')],
+                [InlineKeyboardButton(text='Directorio', url='https://directorio.uca.es/'), InlineKeyboardButton(text='SIRE', url='https://sire.uca.es/')],
+                [InlineKeyboardButton(text='Web Ordenación Académica ESI', url='https://esingenieria.uca.es/ordenacion/')],
+                [InlineKeyboardButton(text='Consulta sire', callback_data='consulta_sire')],
+                [InlineKeyboardButton(text='Volver', callback_data='PAS_menu_spanish_go_back')]
+            ]),
+            parse_mode='Markdown'
+        )
 
     
     
@@ -527,7 +563,7 @@ def first_menu(update, context):
     
     dp.add_handler(CallbackQueryHandler(pattern='selected_idiom_spanish', callback=second_menu_spanish))
     
-    dp.add_handler(CallbackQueryHandler(pattern='selected_idiom_english', callback=second_menu_spanish))
+    dp.add_handler(CallbackQueryHandler(pattern='selected_idiom_english', callback=second_menu_english))
     
     
     if(update.callback_query == None):
@@ -616,8 +652,17 @@ def consulta_clase(update, context):
 
     # print(update.message.text)
     
+    clase = "1"
+    hora = "0"
+    
+    if(message.find("B01") > -1):
+        clase = "B01"
+    
+    if(message.find(" 4 ") > -1):
+        hora = "4"
+    
     update.message.reply_text(
-        text = '*Comprobando su eleccion: *'+update.message.text,
+        text = '*Comprobando su eleccion: *'+clase+" hora: "+hora,
         parse_mode='Markdown'
     )
 
@@ -637,9 +682,6 @@ if __name__ == '__main__':
     
     # dp.add_handler(MessageHandler(Filters.regex('^pdi$'), menu_PDI))
     
-    
-    
-    
     dp.add_handler(ConversationHandler(
         entry_points=[
             CommandHandler('sire', general.start_bot),
@@ -648,70 +690,18 @@ if __name__ == '__main__':
         states={
             general.INPUT_ID_USER: [MessageHandler(Filters.text, input_id_user)], 
             general.CONSULT_SIRE: [MessageHandler(Filters.text, consulta_clase)]
-            # general.INPUT_PW_USER: [MessageHandler(Filters.text, input_pw_user)],
-            # general.SELECT_TYPE_USER: [MessageHandler(Filters.text, select_type_user)],
-            # general.SELECTED_STUDENT: [MessageHandler(Filters.text, start_STUDENT)],
-            # general.SELECTED_PDI: [MessageHandler(Filters.text, start_PDI)],
-            # general.SELECTED_PAS: [MessageHandler(Filters.text, start_PAS)],
-            # general.STUDENT_TIMETABLE:[MessageHandler(Filters.text, timetable.student_timetable)],
-            # general.STUDENT_EXAM_CALENDAR:[MessageHandler(Filters.text, exam_calendar.student_exam_calendar)],
-            # general.STUDENT_TFG:[MessageHandler(Filters.text, tfg.start_tfg)],
-            # # general.STUDENT_TUTORSHIPS:[CallbackQueryHandler(tutorships.student_selected_pdi, pattern='^' + str(general.STUDENT_TUTORSHIPS) + '$')],
-            # general.STUDENT_TUTORSHIPS:[MessageHandler(Filters.text, tutorships.student_start_tutorships)],
-            # general.STUDENT_GLOBAL_EVALUATION:[MessageHandler(Filters.text, global_evaluation.start_evaluacion_global)],
-            # general.STUDENT_SPECIAL_CALL: [MessageHandler(Filters.text, special_call.start_llamamiento_especial)],
-            # general.STUDENT_CONV_DICIEMBRE:[MessageHandler(Filters.text, december_exams.start_conv_diciembre)],
-            # general.STUDENT_GROUP_ASSIGNMENT:[MessageHandler(Filters.text, group_assignment.start_group_assignment)],
-            # general.STUDENT_PRACTICAS_CURRICULARES:[MessageHandler(Filters.text, practice.start_practicas_curriculares)],
-            # general.STUDENT_PRACTICAS_EXTRACURRICULARES:[MessageHandler(Filters.text, practice.start_practicas_extracurriculares)],
-            # general.STUDENT_COMPENSACION:[MessageHandler(Filters.text, compensation_evaluation.start_compensacion)],
-            # general.PDI_TIMETABLE:[MessageHandler(Filters.text, timetable.pdi_timetable)],
-            # general.PDI_EXAM_CALENDAR:[MessageHandler(Filters.text, exam_calendar.pdi_exam_calendar)],
-            # general.PAS_TIMETABLE:[MessageHandler(Filters.text, timetable.pas_timetable)],
-            # general.PAS_EXAM_CALENDAR:[MessageHandler(Filters.text, exam_calendar.pas_exam_calendar)]
-            
-            
         },
 
         fallbacks=[]
     ))
     
-    dp.add_handler(MessageHandler(Filters.text, first_menu))
-
-    # dp.add_handler(ConversationHandler(
-    #     entry_points=[
-    #         CommandHandler('start', general.start_bot),
-    #     ],
-
-    #     states={
-    #         general.INPUT_ID_USER: [MessageHandler(Filters.text, input_id_user)], 
-    #         general.INPUT_PW_USER: [MessageHandler(Filters.text, input_pw_user)],
-    #         general.SELECT_TYPE_USER: [MessageHandler(Filters.text, select_type_user)],
-    #         general.SELECTED_STUDENT: [MessageHandler(Filters.text, start_STUDENT)],
-    #         general.SELECTED_PDI: [MessageHandler(Filters.text, start_PDI)],
-    #         general.SELECTED_PAS: [MessageHandler(Filters.text, start_PAS)],
-    #         general.STUDENT_TIMETABLE:[MessageHandler(Filters.text, timetable.student_timetable)],
-    #         general.STUDENT_EXAM_CALENDAR:[MessageHandler(Filters.text, exam_calendar.student_exam_calendar)],
-    #         general.STUDENT_TFG:[MessageHandler(Filters.text, tfg.start_tfg)],
-    #         # general.STUDENT_TUTORSHIPS:[CallbackQueryHandler(tutorships.student_selected_pdi, pattern='^' + str(general.STUDENT_TUTORSHIPS) + '$')],
-    #         general.STUDENT_TUTORSHIPS:[MessageHandler(Filters.text, tutorships.student_start_tutorships)],
-    #         general.STUDENT_GLOBAL_EVALUATION:[MessageHandler(Filters.text, global_evaluation.start_evaluacion_global)],
-    #         general.STUDENT_SPECIAL_CALL: [MessageHandler(Filters.text, special_call.start_llamamiento_especial)],
-    #         general.STUDENT_CONV_DICIEMBRE:[MessageHandler(Filters.text, december_exams.start_conv_diciembre)],
-    #         general.STUDENT_GROUP_ASSIGNMENT:[MessageHandler(Filters.text, group_assignment.start_group_assignment)],
-    #         general.STUDENT_PRACTICAS_CURRICULARES:[MessageHandler(Filters.text, practice.start_practicas_curriculares)],
-    #         general.STUDENT_PRACTICAS_EXTRACURRICULARES:[MessageHandler(Filters.text, practice.start_practicas_extracurriculares)],
-    #         general.STUDENT_COMPENSACION:[MessageHandler(Filters.text, compensation_evaluation.start_compensacion)],
-    #         general.PDI_TIMETABLE:[MessageHandler(Filters.text, timetable.pdi_timetable)],
-    #         general.PDI_EXAM_CALENDAR:[MessageHandler(Filters.text, exam_calendar.pdi_exam_calendar)],
-    #         general.PAS_TIMETABLE:[MessageHandler(Filters.text, timetable.pas_timetable)],
-    #         general.PAS_EXAM_CALENDAR:[MessageHandler(Filters.text, exam_calendar.pas_exam_calendar)]
-            
-    #     },
-
-    #     fallbacks=[]
-    # ))
+    dp.add_handler(MessageHandler(Filters.regex(r'alumnos colaboradores'), collaborating_students.student_collaborating_students))
+    dp.add_handler(MessageHandler(Filters.regex(r'llamamiento especial'), special_call.start_llamamiento_especial))
+    dp.add_handler(MessageHandler(Filters.regex(r'estudiante'), menu_estudiante))
+    dp.add_handler(MessageHandler(Filters.regex(r'PDI'), menu_PDI))
+    dp.add_handler(MessageHandler(Filters.regex(r'PAS'), menu_PAS))
     
-
+    dp.add_handler(MessageHandler(Filters.text, first_menu))
+    
     updater.start_polling()
     updater.idle()
