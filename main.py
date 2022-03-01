@@ -3,7 +3,7 @@ from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
 import general, timetable, exam_calendar, tutorships
 
-from student import tfg, global_evaluation, special_call, december_exams, group_assignment, practice, collaborating_students, compensation_evaluation
+from student import tfg, global_evaluation, special_call, december_exams, group_assignment, practice, collaborating_students, compensation_evaluation, movilidad
 
 # import Novell.Directory.Ldap
 
@@ -347,6 +347,8 @@ def menu_estudiante(update, context):
     # Practicas
     # dp.add_handler(CallbackQueryHandler(pattern='practicas_convalidar', callback=practice.callback_practicas_convalidar))
     # dp.add_handler(CallbackQueryHandler(pattern='practicas_diferencias', callback=practice.callback_practicas_diferencias))
+    
+    dp.add_handler(CallbackQueryHandler(pattern='start_practice', callback=practice.start_practicas))
       
     # Practicas curriculares
     # dp.add_handler(CommandHandler('practicas_curriculares', practicas.start_practicas_curriculares))
@@ -385,13 +387,19 @@ def menu_estudiante(update, context):
     
     # Evaluacion por compensacion
     # dp.add_handler(CommandHandler('compensacion', evaluacion_compensacion.start_compensacion))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_compensacion', callback=compensation_evaluation.start_compensacion))
+    dp.add_handler(CallbackQueryHandler(pattern='start_compensacion', callback=compensation_evaluation.start_compensacion))
+    dp.add_handler(CallbackQueryHandler(pattern='inicio_comnpensacion_no_habilitantes', callback=compensation_evaluation.start_compensacion_no_habilitantes))
     dp.add_handler(CallbackQueryHandler(pattern='compensacion_periodo', callback=compensation_evaluation.callback_compensacion_periodo))
     dp.add_handler(CallbackQueryHandler(pattern='compensacion_requisitos', callback=compensation_evaluation.callback_compensacion_requisitos))
     dp.add_handler(CallbackQueryHandler(pattern='compensacion_req_especificos', callback=compensation_evaluation.callback_compensacion_req_especificos))
     
     # dp.add_handler(CallbackQueryHandler(pattern='student_spanish_compensacion_go_back', callback=compensation_evaluation.callback_compensacion_req_especificos))
     
+    
+    
+    # Movilidad
+    dp.add_handler(CallbackQueryHandler(pattern='inicio_movilidad', callback=movilidad.start_movilidad))
+    dp.add_handler(CallbackQueryHandler(pattern='movilidad_otras_movilidades', callback=movilidad.movilidad_otras_movilidades))
 
 
 
@@ -416,8 +424,8 @@ def menu_estudiante(update, context):
                 [InlineKeyboardButton(text='TFG/M', callback_data='inicio_tfg'), InlineKeyboardButton(text='Tutorías', callback_data='student_start_tutorships')],
                 [InlineKeyboardButton(text='Evaluación global', callback_data='inicio_evaluacion_global'), InlineKeyboardButton(text='Llamamiento especial', callback_data='inicio_llamamiento_especial')],
                 [InlineKeyboardButton(text='Convocatoria diciembre', callback_data='inicio_conv_diciembre'),InlineKeyboardButton(text='Asignación de grupos', callback_data='inicio_group_assignment')],
-                [InlineKeyboardButton(text='Prácticas curriculares', callback_data='inicio_practicas_curriculares'), InlineKeyboardButton(text='Prácticas extracurriculares', callback_data='inicio_practicas_extracurriculares')],
-                [InlineKeyboardButton(text='Alumnos colaboradores', callback_data='student_collaborating_students'), InlineKeyboardButton(text='Evaluación por compensación', callback_data='inicio_compensacion')],
+                [InlineKeyboardButton(text='Prácticas', callback_data='start_practice'), InlineKeyboardButton(text='Movilidad', callback_data='inicio_movilidad')],
+                [InlineKeyboardButton(text='Alumnos colaboradores', callback_data='student_collaborating_students'), InlineKeyboardButton(text='Evaluación por compensación', callback_data='start_compensacion')],
                 [InlineKeyboardButton(text='Web Ordenación Académica ESI', url='https://esingenieria.uca.es/ordenacion/')],
                 [InlineKeyboardButton(text='Volver', callback_data='student_menu_spanish_go_back')]
             ]),
@@ -436,8 +444,8 @@ def menu_estudiante(update, context):
                 [InlineKeyboardButton(text='TFG/M', callback_data='inicio_tfg'), InlineKeyboardButton(text='Tutorías', callback_data='student_start_tutorships')],
                 [InlineKeyboardButton(text='Evaluación global', callback_data='inicio_evaluacion_global'), InlineKeyboardButton(text='Llamamiento especial', callback_data='inicio_llamamiento_especial')],
                 [InlineKeyboardButton(text='Convocatoria diciembre', callback_data='inicio_conv_diciembre'),InlineKeyboardButton(text='Asignación de grupos', callback_data='inicio_group_assignment')],
-                [InlineKeyboardButton(text='Prácticas curriculares', callback_data='inicio_practicas_curriculares'), InlineKeyboardButton(text='Prácticas extracurriculares', callback_data='inicio_practicas_extracurriculares')],
-                [InlineKeyboardButton(text='Alumnos colaboradores', callback_data='student_collaborating_students'), InlineKeyboardButton(text='Evaluación por compensación', callback_data='inicio_compensacion')],
+                [InlineKeyboardButton(text='Prácticas', callback_data='start_practice'), InlineKeyboardButton(text='Movilidad', callback_data='inicio_movilidad')],
+                [InlineKeyboardButton(text='Alumnos colaboradores', callback_data='student_collaborating_students'), InlineKeyboardButton(text='Evaluación por compensación', callback_data='start_compensacion')],
                 [InlineKeyboardButton(text='Web Ordenación Académica ESI', url='https://esingenieria.uca.es/ordenacion/')],
                 [InlineKeyboardButton(text='Volver', callback_data='student_menu_spanish_go_back')]
             ]),
@@ -569,10 +577,10 @@ def first_menu(update, context):
     if(update.callback_query == None):
 
         update.message.reply_text(
-            text = '*Bienvenid@ al bot de Ordenación Académica de la ESI - UCA*',
+            text = '*Bienvenid@ al bot de Ordenación Académica de la ESI - UCA* \nSeleccione una opción o escriba sobre que quiere tener información',
             reply_markup = InlineKeyboardMarkup([
                 [InlineKeyboardButton(text='Español', callback_data='selected_idiom_spanish')],
-                [InlineKeyboardButton(text='Inglés', callback_data='selected_idiom_english')]
+                [InlineKeyboardButton(text='English', callback_data='selected_idiom_english')]
             ]),
             parse_mode='Markdown'
         )
@@ -582,10 +590,10 @@ def first_menu(update, context):
         query = update.callback_query
         query.answer()
         query.edit_message_text(
-            text = '*Bienvenid@ al bot de Ordenación Académica de la ESI - UCA*',
+            text = '*Bienvenid@ al bot de Ordenación Académica de la ESI - UCA* \nSeleccione una opción o escriba sobre que quiere tener información',
             reply_markup = InlineKeyboardMarkup([
                 [InlineKeyboardButton(text='Español', callback_data='selected_idiom_spanish')],
-                [InlineKeyboardButton(text='Inglés', callback_data='selected_idiom_english')]
+                [InlineKeyboardButton(text='English', callback_data='selected_idiom_english')]
             ]),
             parse_mode='Markdown'
         )
@@ -626,10 +634,10 @@ def second_menu_english(update, context):
     query.edit_message_text(
         text = '*Select which role you want to consult*',
         reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton(text='Estudiante', callback_data='selected_student')],
+            [InlineKeyboardButton(text='Student', callback_data='selected_student')],
             [InlineKeyboardButton(text='PDI', callback_data='selected_PDI')],
             [InlineKeyboardButton(text='PAS', callback_data='selected_PAS')],
-            [InlineKeyboardButton(text='Volver', callback_data='selected_second_menu_go_back')]
+            [InlineKeyboardButton(text='Go back', callback_data='selected_second_menu_go_back')]
         ]),
         parse_mode='Markdown'
     )  

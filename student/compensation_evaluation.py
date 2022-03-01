@@ -11,9 +11,26 @@ def start_compensacion(update, context):
     query.edit_message_text(
         text = 'La evaluación por compensación consiste en superar una asignatura, sin necesidad de realizar examen, siempre y cuando se cumplan los requisitos para ello',
         reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Títulos habilitantes', url='https://esingenieria.uca.es/wp-content/uploads/2014/10/Criterios-de-Aprobado-por-Compensacion.pdf')],
+            [InlineKeyboardButton(text='Títulos no habilitantes', callback_data='inicio_comnpensacion_no_habilitantes')],
+            [InlineKeyboardButton(text='Volver', callback_data='student_spanish_go_back')]
+        ])
+    )
+    
+ 
+ 
+    
+    
+def start_compensacion_no_habilitantes(update, context):
+
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'Títulos no habilitantes',
+        reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Periodo de solicitud', callback_data='compensacion_periodo'), InlineKeyboardButton(text='Requisitos', callback_data='compensacion_requisitos')],
             [InlineKeyboardButton(text='Requisitos específicos', callback_data='compensacion_req_especificos'),InlineKeyboardButton(text='CAU', url='https://cau-alumnos.uca.es/cau/servicio.do?id=O109')],
-            [InlineKeyboardButton(text='Volver', callback_data='student_spanish_go_back')]
+            [InlineKeyboardButton(text='Volver', callback_data='start_compensacion')]
         ])
     )
 
@@ -24,7 +41,7 @@ def callback_compensacion_periodo(update, context):
     query.edit_message_text(
         text = 'Primer Plazo: del 7 al 22 de enero. \nSegundo Plazo: del 7 al 22 de marzo. \nTercer Plazo: del 7 al 22 de julio. \nCuarto Plazo: del 22 de septiembre al 7 de octubre.',
         reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton(text='Volver', callback_data='inicio_compensacion')]
+            [InlineKeyboardButton(text='Volver', callback_data='inicio_comnpensacion_no_habilitantes')]
         ])
     )
     
@@ -40,7 +57,7 @@ def callback_compensacion_requisitos(update, context):
                 '\n\n\n\nTÍTULOS DE MÁSTER:'
                 '\n\n\t\t El alumno de MÁSTER deberá tener pendiente para terminar sus estudios de Máster una asignatura (que será la asignatura objeto de esta solicitud)',
         reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton(text='Volver', callback_data='inicio_compensacion')]
+            [InlineKeyboardButton(text='Volver', callback_data='inicio_comnpensacion_no_habilitantes')]
         ])
     )
    
@@ -63,7 +80,7 @@ def callback_compensacion_req_especificos(update, context):
                 '\n\n\n2º. Alumnos de GRADO que hayan obtenido DOS calificaciones iguales o superiores a un 4,0'
                 '\n\n\n3º. Alumnado que se sitúe al menos dos veces entre el 25% de los mejores calificados en las convocatorias de febrero, junio o septiembre en cursos académicos donde la asignatura solicitada tenga una tasa de rendimiento inferior al 25%',
         reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton(text='Volver', callback_data='inicio_compensacion')]
+            [InlineKeyboardButton(text='Volver', callback_data='inicio_comnpensacion_no_habilitantes')]
         ])
     )
 

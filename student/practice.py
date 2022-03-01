@@ -6,6 +6,23 @@ from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 import general
 
 
+
+
+
+def start_practicas(update, context):
+
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'Hay dos tipos de prácticas',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Curriculares', callback_data='inicio_practicas_curriculares')],
+            [InlineKeyboardButton(text='Extracurriculares', callback_data='inicio_practicas_extracurriculares')],
+            [InlineKeyboardButton(text='Volver', callback_data='student_spanish_go_back')]
+        ])
+    )
+
+
 # Practicas Curriculares
 
 def start_practicas_curriculares(update, context):
@@ -23,7 +40,7 @@ def start_practicas_curriculares(update, context):
             [InlineKeyboardButton(text='¿Dónde debo inscribirme para realizar prácticas curriculares?', callback_data='practicas_curriculares_periodo')],
             [InlineKeyboardButton(text='¿En qué se diferencian por tanto de las prácticas extracurriculares?', callback_data='practicas_curriculares_diferencias')],
             [InlineKeyboardButton(text='¿Puedo convalidar unas prácticas extracurriculares por las curriculares?', callback_data='practicas_curriculares_convalidar')],
-            [InlineKeyboardButton(text='Volver', callback_data='student_spanish_go_back')]
+            [InlineKeyboardButton(text='Volver', callback_data='start_practice')]
         ])
     )
         
@@ -160,7 +177,7 @@ def start_practicas_extracurriculares(update, context):
                 [InlineKeyboardButton(text='¿Existe algún plazo para solicitarlas?', callback_data='practicas_extracurriculares_periodo')],
                 [InlineKeyboardButton(text='¿Tienes derecho a vacaciones mientras realizas las prácticas?', callback_data='practicas_extracurriculares_vacaciones')],
                 [InlineKeyboardButton(text='¿Debo recuperar los días que asisto a exámenes? ¿Y tutorías?', callback_data='practicas_extracurriculares_recuperar_dias')],
-                [InlineKeyboardButton(text='Volver', callback_data='student_spanish_go_back')]
+                [InlineKeyboardButton(text='Volver', callback_data='start_practice')]
         ])
     )
         
