@@ -4,7 +4,7 @@ from telegram.ext import Updater, CommandHandler, ConversationHandler, CallbackQ
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-
+import main
 
 
 # Updater sirve para saber las peticiones que va recibiendo el bot, todo lo que hace el usuario pasa por el updater
@@ -27,12 +27,29 @@ from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
 INPUT_ID_USER, CONSULT_SIRE = range(2)
 
+flag_login = 0
+user_id = ''
+user_pw = ''
+
+
 def comienzo_bot(update, context):
     update.message.reply_text('Por favor para comenzar a utilizar el bot, escriba /iniciar')
     
-def start_bot(update, context):
-    update.message.reply_text('Escriba su usuario y contraseña de la UCA de manera: USUARIO y CONSTRASEÑA.\n \t\tEjemplo: "u123321" y "c1123321"')
-    return INPUT_ID_USER
+def start_sire(update, context):
+    if(flag_login):
+        update.message.reply_text('Ahora mismo no podemos conectarte, intentelo de nuevo mas tarde')
+        return ConversationHandler.END
+    else:
+        update.message.reply_text('Escriba su usuario y contraseña de la UCA de manera: USUARIO y CONSTRASEÑA.\n \t\tEjemplo: "u123321" y "c1123321"')
+        return INPUT_ID_USER
+    
+def desconexion(update, context):
+    main.desconexion_variable(update,context)
+    update.message.reply_text('Conexión SIRE finalizada.')
+    return ConversationHandler.END
+
+
+
 
 # def student_go_back(update, context):
 #     if(update.callback_query == None):
@@ -68,8 +85,3 @@ def start_bot(update, context):
         
 #     return SELECTED_PAS
 
-def desconexion(update, context):
-    
-    update.message.reply_text('Conexión SIRE finalizada.')
-   
-    return ConversationHandler.END

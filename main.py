@@ -83,41 +83,50 @@ def conectar_ldap(user, password, update, context):
       
       
 def input_id_user(update, context):
-   
-    usuario = update.message.text.split(' y ')
-    if(len(usuario) == 2):
-    
-        if(usuario[0] == '1' or usuario[0] == '2' or usuario[0] == '3'):
-            
-            if(usuario[0] == '1'):
-                print('ESTUDIANTE')
-                update.message.reply_text('Escriba sobre que desea tener información')
-                return general.CONSULT_SIRE
-            
-            elif(usuario[0] == '2'):
-                print('PDI')
-                update.message.reply_text('Escriba sobre que desea tener información')
-                return general.CONSULT_SIRE
-            
-            elif(usuario[0] == '3'):
-                print('PAS')
-                update.message.reply_text('Escriba sobre que desea tener información')
-                return general.CONSULT_SIRE
+    if(general.flag_login == 0):
+        general.flag_login = 1
+        usuario = update.message.text.split(' y ')
+        if(len(usuario) == 2):
         
-        else:
-            
-            rol = conectar_ldap(usuario[0],usuario[1], update, context)
-            if(rol == "Alumnos"):
-                print('ESTUDIANTE')
-                update.message.reply_text('Escriba sobre que desea tener información')
-                return general.CONSULT_SIRE
+            general.user_id = usuario[0] 
+            general.user_pw = usuario[1] 
+        
+            if(usuario[0] == '1' or usuario[0] == '2' or usuario[0] == '3'):
+                
+                
+                
+                if(usuario[0] == '1'):
+                    print('ESTUDIANTE')
+                    update.message.reply_text('Escriba sobre que desea tener información en formato: Clase, dia, mes, dia de la semana, hora')
+                    return general.CONSULT_SIRE
+                
+                elif(usuario[0] == '2'):
+                    print('PDI')
+                    update.message.reply_text('Escriba sobre que desea tener información')
+                    return general.CONSULT_SIRE
+                
+                elif(usuario[0] == '3'):
+                    print('PAS')
+                    update.message.reply_text('Escriba sobre que desea tener información')
+                    return general.CONSULT_SIRE
             
             else:
-                general.start_bot(update, context) 
-    
+                
+                rol = conectar_ldap(usuario[0],usuario[1], update, context)
+                if(rol == "Alumnos"):
+                    print('ESTUDIANTE')
+                    update.message.reply_text('Escriba sobre que desea tener información')
+                    return general.CONSULT_SIRE
+                
+                else:
+                    general.start_sire(update, context) 
+        
+        else:
+            update.message.reply_text('Por favor, introduzca los datos de manera que se le explica en el mensaje')
+            general.start_sire(update, context)
     else:
-        update.message.reply_text('Por favor, introduzca los datos de manera que se le explica en el mensaje')
-        general.start_bot(update, context)
+        update.message.reply_text('Ahora mismo no podemos conectarte, intentelo de nuevo mas tarde')
+        return ConversationHandler.END
         
         
          
@@ -128,6 +137,8 @@ def input_id_user(update, context):
     
     # return general.SELECT_TYPE_USER
     
+def desconexion_variable(update, context):
+    general.flag_login = 0
     
 
 def input_pw_user(update, context):
@@ -660,17 +671,12 @@ def consulta_clase(update, context):
 
     # print(update.message.text)
     
-    clase = "1"
-    hora = "0"
+    consulta = update.message.text.split(', ')
     
-    if(message.find("B01") > -1):
-        clase = "B01"
     
-    if(message.find(" 4 ") > -1):
-        hora = "4"
     
     update.message.reply_text(
-        text = '*Comprobando su eleccion: *'+clase+" hora: "+hora,
+        text = '*Comprobando su eleccion: *\nClase:'+consulta[0]+' Dia:'+consulta[1]+' Mes:'+consulta[2]+' Dia de la semana:'+consulta[3]+' Hora:'+consulta[4],
         parse_mode='Markdown'
     )
 
@@ -692,7 +698,7 @@ if __name__ == '__main__':
     
     dp.add_handler(ConversationHandler(
         entry_points=[
-            CommandHandler('sire', general.start_bot),
+            CommandHandler('sire', general.start_sire),
         ],
 
         states={
@@ -703,13 +709,18 @@ if __name__ == '__main__':
         fallbacks=[]
     ))
     
-    dp.add_handler(MessageHandler(Filters.regex(r'alumnos colaboradores'), collaborating_students.student_collaborating_students))
-    dp.add_handler(MessageHandler(Filters.regex(r'llamamiento especial'), special_call.start_llamamiento_especial))
+    
+    dp.add_handler(MessageHandler(Filters.regex(r'horarios|Horarios|HORARIOS|horario|Horario|HORARIO'), timetable.student_timetable))
+    dp.add_handler(MessageHandler(Filters.regex(r'exámenes|Exámenes|EXÁMENES|examenes|Examenes|EXAMENES'), exam_calendar.student_exam_calendar))
+    
+    dp.add_handler(MessageHandler(Filters.regex(r'alumnos colaboradores|Alumnos colaboradores|ALUMNOS COLABORADORES'), collaborating_students.student_collaborating_students))
+    dp.add_handler(MessageHandler(Filters.regex(r'llamamiento especial|Llamamiento especial|LLAMAMIENTO ESPECIAL'), special_call.start_llamamiento_especial))
     dp.add_handler(MessageHandler(Filters.regex(r'estudiante'), menu_estudiante))
     dp.add_handler(MessageHandler(Filters.regex(r'PDI'), menu_PDI))
     dp.add_handler(MessageHandler(Filters.regex(r'PAS'), menu_PAS))
     
     dp.add_handler(MessageHandler(Filters.text, first_menu))
+    
     
     updater.start_polling()
     updater.idle()
