@@ -190,125 +190,7 @@ def select_type_user(update, context):
         return general.INPUT_ID_USER
         
 
-# ESTUDIANTE
-
-def start_STUDENT(update, context):
-  
-    dp.add_handler(CommandHandler('menu_estudiante', menu_estudiante))
-
-    # Horarios
-    # dp.add_handler(CommandHandler('horarios', horarios.start_horarios))
-    dp.add_handler(CallbackQueryHandler(pattern='student_timetable', callback=timetable.student_timetable))
-    
-    
-    # Calendario de examenes
-    dp.add_handler(CallbackQueryHandler(pattern='student_exam_calendar', callback=exam_calendar.student_exam_calendar))
-    
-    
-    # TFG
-    # dp.add_handler(CommandHandler('tfg', tfg.start_tfg))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_tfg', callback=tfg.start_tfg))
-    dp.add_handler(CallbackQueryHandler(pattern='tfg_reglamento', callback=tfg.callback_tfg_reglamento))
-    dp.add_handler(CallbackQueryHandler(pattern='tfg_fechas_reuniones', callback=tfg.callback_tfg_fechas_reuniones))
-    dp.add_handler(CallbackQueryHandler(pattern='tfg_periodos_defensa', callback=tfg.callback_tfg_periodo_defensa))
-    
-    # Documentos TFG
-    dp.add_handler(CallbackQueryHandler(pattern='get_tfg_reglamento', callback=tfg.get_tfg_reglamento))
-    dp.add_handler(CallbackQueryHandler(pattern='get_tfg_portada_externa', callback=tfg.get_tfg_portada_externa))
-    dp.add_handler(CallbackQueryHandler(pattern='get_tfg_primera_interna', callback=tfg.get_tfg_primera_interna))
-    dp.add_handler(CallbackQueryHandler(pattern='get_tfg_segunda_interna', callback=tfg.get_tfg_segunda_interna))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/01', callback=tfg.get_TFG01))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/02', callback=tfg.get_TFG02))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/03', callback=tfg.get_TFG03))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/04', callback=tfg.get_TFG04))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/05', callback=tfg.get_TFG05))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/06', callback=tfg.get_TFG06))
-    
-    
-
-    # Evaluación global
-    # dp.add_handler(CommandHandler('evaluacion_global', evaluacion_global.start_evaluacion_global))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_evaluacion_global', callback=global_evaluation.start_evaluacion_global))
-    dp.add_handler(CallbackQueryHandler(pattern='evaluacion_global_periodo', callback=global_evaluation.callback_evaluacion_global_periodo))
-
-
-    #Llamamiento Especial
-    # dp.add_handler(CommandHandler('llamamiento_especial', llamamiento_especial.start_llamamiento_especial))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_llamamiento_especial', callback=special_call.start_llamamiento_especial))
-    dp.add_handler(CallbackQueryHandler(pattern='llamamiento_especial_periodo', callback=special_call.callback_llamamiento_especial_periodo))
-    dp.add_handler(CallbackQueryHandler(pattern='llamamiento_especial_requisitos', callback=special_call.callback_llamamiento_especial_requisitos))
-    dp.add_handler(CallbackQueryHandler(pattern='llamamiento_especial_examenes', callback=special_call.callback_llamamiento_especial_examenes))
-    dp.add_handler(CallbackQueryHandler(pattern='llamamiento_especial_presentarmeSinFormulario', callback=special_call.callback_llamamiento_especial_presentarmeSinFormulario))
-
-    # Convocatoria Diciembre
-    # dp.add_handler(CommandHandler('convocatoria_diciembre', convocatoria_diciembre.start_conv_diciembre))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_conv_diciembre', callback=december_exams.start_conv_diciembre))
-    dp.add_handler(CallbackQueryHandler(pattern='conv_diciembre_periodo', callback=december_exams.callback_conv_diciembre_periodo))
-    dp.add_handler(CallbackQueryHandler(pattern='conv_diciembre_requisitos', callback=december_exams.callback_conv_diciembre_requisitos))
-
-
-    # Asignacion de grupos
-    # dp.add_handler(CommandHandler('asignacion_grupos', asignacion_grupos.start_asignacion_grupos))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_group_assignment', callback=group_assignment.start_group_assignment))
-    
-    
-    # Practicas
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_convalidar', callback=practice.callback_practicas_convalidar))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_diferencias', callback=practice.callback_practicas_diferencias))
-      
-    # Practicas curriculares
-    # dp.add_handler(CommandHandler('practicas_curriculares', practicas.start_practicas_curriculares))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_practicas_curriculares', callback=practice.start_practicas_curriculares))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_curriculares_duracion', callback=practice.callback_practicas_curriculares_duracion))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_curriculares_retribucion', callback=practice.callback_practicas_curriculares_retribucion))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_curriculares_ayuda_economica', callback=practice.callback_practicas_curriculares_ayuda_economica))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_curriculares_localidad', callback=practice.callback_practicas_curriculares_localidad))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_curriculares_numero', callback=practice.callback_practicas_curriculares_numero))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_curriculares_periodo', callback=practice.callback_practicas_curriculares_periodo))
-      
-    # Practicas extracurriculares
-    # dp.add_handler(CommandHandler('practicas_extracurriculares', practicas.start_practicas_extracurriculares))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_practicas_extracurriculares', callback=practice.start_practicas_extracurriculares))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_duracion', callback=practice.callback_practicas_extracurriculares_duracion))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_retribucion', callback=practice.callback_practicas_extracurriculares_retribucion))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_ayuda_economica', callback=practice.callback_practicas_extracurriculares_ayuda_economica))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_beca', callback=practice.callback_practicas_extracurriculares_beca))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_encontrar', callback=practice.callback_practicas_extracurriculares_encontrar))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_localidad', callback=practice.callback_practicas_extracurriculares_localidad))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_numero', callback=practice.callback_practicas_extracurriculares_numero))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_requisitos', callback=practice.callback_practicas_extracurriculares_requisitos))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_periodo', callback=practice.callback_practicas_extracurriculares_periodo))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_vacaciones', callback=practice.callback_practicas_extracurriculares_vacaciones))
-    dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_recuperar_dias', callback=practice.callback_practicas_extracurriculares_recuperar_dias))
-    
-    
-    # Alumnos Colaboradores
-    
-    dp.add_handler(CallbackQueryHandler(pattern='student_collaborating_students', callback=collaborating_students.student_collaborating_students))
-    
-    
-    # Evaluacion por compensacion
-    # dp.add_handler(CommandHandler('compensacion', evaluacion_compensacion.start_compensacion))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_compensacion', callback=compensation_evaluation.start_compensacion))
-    dp.add_handler(CallbackQueryHandler(pattern='compensacion_periodo', callback=compensation_evaluation.callback_compensacion_periodo))
-    dp.add_handler(CallbackQueryHandler(pattern='compensacion_requisitos', callback=compensation_evaluation.callback_compensacion_requisitos))
-    dp.add_handler(CallbackQueryHandler(pattern='compensacion_req_especificos', callback=compensation_evaluation.callback_compensacion_req_especificos))
-
-
-
-    # Volver atras
-    dp.add_handler(CallbackQueryHandler(pattern='student_go_back', callback=general.student_go_back))
-    
-    # Tutorias
-    dp.add_handler(CallbackQueryHandler(pattern='student_start_tutorships', callback=tutorships.student_start_tutorships))
-    
-
-
-    dp.add_handler(CallbackQueryHandler(pattern='selected_student_spanish_menu_go_back', callback=second_menu_spanish))
-   
-    menu_estudiante(update,context)
-                    
-
+# STUDENT
 def menu_estudiante(update, context):
     
     # Horarios
@@ -477,20 +359,16 @@ def menu_estudiante(update, context):
 
 def student_menu_english(update, context):
      # Horarios
-    # dp.add_handler(CommandHandler('horarios', horarios.start_horarios))
     dp.add_handler(CallbackQueryHandler(pattern='student_timetable_english', callback=timetable.student_timetable_english))
-    
     
     # Calendario de examenes
     dp.add_handler(CallbackQueryHandler(pattern='student_exam_calendar_english', callback=exam_calendar.student_exam_calendar_english))
     
-    
     # TFG
-    # dp.add_handler(CommandHandler('tfg', tfg.start_tfg))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_tfg', callback=tfg.start_tfg))
-    dp.add_handler(CallbackQueryHandler(pattern='tfg_reglamento', callback=tfg.callback_tfg_reglamento))
-    dp.add_handler(CallbackQueryHandler(pattern='tfg_fechas_reuniones', callback=tfg.callback_tfg_fechas_reuniones))
-    dp.add_handler(CallbackQueryHandler(pattern='tfg_periodos_defensa', callback=tfg.callback_tfg_periodo_defensa))
+    dp.add_handler(CallbackQueryHandler(pattern='tfg_start_english', callback=tfg.tfg_start_english))
+    dp.add_handler(CallbackQueryHandler(pattern='tfg_reglamento_english', callback=tfg.callback_tfg_reglamento_english))
+    dp.add_handler(CallbackQueryHandler(pattern='tfg_fechas_reuniones_english', callback=tfg.callback_tfg_fechas_reuniones_english))
+    dp.add_handler(CallbackQueryHandler(pattern='tfg_periodos_defensa_english', callback=tfg.callback_tfg_periodo_defensa_english))
     
     # Documentos TFG
     dp.add_handler(CallbackQueryHandler(pattern='get_tfg_reglamento', callback=tfg.get_tfg_reglamento))
@@ -504,12 +382,13 @@ def student_menu_english(update, context):
     dp.add_handler(CallbackQueryHandler(pattern='get_TFG/05', callback=tfg.get_TFG05))
     dp.add_handler(CallbackQueryHandler(pattern='get_TFG/06', callback=tfg.get_TFG06))
     
+    # Tutorias
+    dp.add_handler(CallbackQueryHandler(pattern='student_start_tutorships_english', callback=tutorships.student_start_tutorships_english))
     
 
     # Evaluación global
-    # dp.add_handler(CommandHandler('evaluacion_global', evaluacion_global.start_evaluacion_global))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_evaluacion_global', callback=global_evaluation.start_evaluacion_global))
-    dp.add_handler(CallbackQueryHandler(pattern='evaluacion_global_periodo', callback=global_evaluation.callback_evaluacion_global_periodo))
+    dp.add_handler(CallbackQueryHandler(pattern='global_assessment_start_english', callback=global_evaluation.global_assessment_start_english))
+    dp.add_handler(CallbackQueryHandler(pattern='global_assessment_periodo_english', callback=global_evaluation.callback_global_assessment_periodo_english))
 
 
     #Llamamiento Especial
@@ -594,8 +473,7 @@ def student_menu_english(update, context):
     # Volver atras
     # dp.add_handler(CallbackQueryHandler(pattern='student_spanish_go_back', callback=menu_estudiante))
     
-    # Tutorias
-    dp.add_handler(CallbackQueryHandler(pattern='student_start_tutorships', callback=tutorships.student_start_tutorships))
+    
     
     # Volver atras
     dp.add_handler(CallbackQueryHandler(pattern='student_english_go_back', callback=student_menu_english))
@@ -610,8 +488,8 @@ def student_menu_english(update, context):
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='ESI news', url='https://esingenieria.uca.es/noticia/')],
             [InlineKeyboardButton(text='Timetables', callback_data='student_timetable_english'),InlineKeyboardButton(text='Exams calendars', callback_data='student_exam_calendar_english')],
-            [InlineKeyboardButton(text='TFG/M', callback_data='inicio_tfg'), InlineKeyboardButton(text='Tutorials', callback_data='student_start_tutorships')],
-            [InlineKeyboardButton(text='Global assessment', callback_data='inicio_evaluacion_global'), InlineKeyboardButton(text='Special call', callback_data='inicio_llamamiento_especial')],
+            [InlineKeyboardButton(text='TFG/M', callback_data='tfg_start_english'), InlineKeyboardButton(text='Tutorials', callback_data='student_start_tutorships_english')],
+            [InlineKeyboardButton(text='Global assessment', callback_data='global_assessment_start_english'), InlineKeyboardButton(text='Special call', callback_data='inicio_llamamiento_especial')],
             [InlineKeyboardButton(text='December call', callback_data='inicio_conv_diciembre'),InlineKeyboardButton(text='Group assigment', callback_data='inicio_group_assignment')],
             [InlineKeyboardButton(text='Internships', callback_data='start_practice'), InlineKeyboardButton(text='Mobility', callback_data='inicio_movilidad')],
             [InlineKeyboardButton(text='Collaborating studing', callback_data='student_collaborating_students'), InlineKeyboardButton(text='Assesment by compensation', callback_data='start_compensacion')],
@@ -635,40 +513,22 @@ def menu_PDI(update, context):
     
     dp.add_handler(CallbackQueryHandler(pattern='PDI_menu_spanish_go_back', callback=second_menu_spanish))
     
-    
-    if(update.callback_query == None):
-        
-        update.message.reply_text(
-            text = '*Bienvenid@ al menu PDI*',
-            reply_markup = InlineKeyboardMarkup([
-                [InlineKeyboardButton(text='Noticias ESI', url='https://esingenieria.uca.es/noticia/')],
-                [InlineKeyboardButton(text='Horarios', callback_data='pdi_timetable'), InlineKeyboardButton(text='Calendarios de exámenes', callback_data='pdi_exam_calendar')],
-                [InlineKeyboardButton(text='Calendario Académico', url='https://esingenieria.uca.es/wp-content/uploads/2021/05/Calendario-Academico-2021-22-ESI.pdf')],
-                [InlineKeyboardButton(text='Formulario de incidencia docente', url='https://esingenieria.uca.es/ordenacion-pdi/'), InlineKeyboardButton(text='Horarios por áreas', url='https://esingenieria.uca.es/ordenacion-pdi/')],
-                [InlineKeyboardButton(text='Guía para los programas docentes', url='https://esingenieria.uca.es/wp-content/uploads/2021/06/Indicaciones_Programas_Docentes_ESI%20_v2.pdf'), InlineKeyboardButton(text='Acceso a GOA', url='https://goa.uca.es/')],
-                [InlineKeyboardButton(text='Acceso al Sistema de Información', url='https://sistemadeinformacion.uca.es/'), InlineKeyboardButton(text='SIRE', url='https://sire.uca.es/')],
-                [InlineKeyboardButton(text='Web Ordenación Académica ESI', url='https://esingenieria.uca.es/ordenacion/')],
-                [InlineKeyboardButton(text='Volver', callback_data='PDI_menu_spanish_go_back')]
-            ]),
-            parse_mode='Markdown'
-        )
-    else:
-        query = update.callback_query
-        query.answer()
-        query.edit_message_text(
-            text = '*Bienvenid@ al menu PDI*',
-            reply_markup = InlineKeyboardMarkup([
-                [InlineKeyboardButton(text='Noticias ESI', url='https://esingenieria.uca.es/noticia/')],
-                [InlineKeyboardButton(text='Horarios', callback_data='pdi_timetable'), InlineKeyboardButton(text='Calendarios de exámenes', callback_data='pdi_exam_calendar')],
-                [InlineKeyboardButton(text='Calendario Académico', url='https://esingenieria.uca.es/wp-content/uploads/2021/05/Calendario-Academico-2021-22-ESI.pdf')],
-                [InlineKeyboardButton(text='Formulario de incidencia docente', url='https://esingenieria.uca.es/ordenacion-pdi/'), InlineKeyboardButton(text='Horarios por áreas', url='https://esingenieria.uca.es/ordenacion-pdi/')],
-                [InlineKeyboardButton(text='Guía para los programas docentes', url='https://esingenieria.uca.es/wp-content/uploads/2021/06/Indicaciones_Programas_Docentes_ESI%20_v2.pdf'), InlineKeyboardButton(text='Acceso a GOA', url='https://goa.uca.es/')],
-                [InlineKeyboardButton(text='Acceso al Sistema de Información', url='https://sistemadeinformacion.uca.es/'), InlineKeyboardButton(text='SIRE', url='https://sire.uca.es/')],
-                [InlineKeyboardButton(text='Web Ordenación Académica ESI', url='https://esingenieria.uca.es/ordenacion/')],
-                [InlineKeyboardButton(text='Volver', callback_data='PDI_menu_spanish_go_back')]
-            ]),
-            parse_mode='Markdown'
-        )
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = '*Bienvenid@ al menu PDI*',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Noticias ESI', url='https://esingenieria.uca.es/noticia/')],
+            [InlineKeyboardButton(text='Horarios', callback_data='pdi_timetable'), InlineKeyboardButton(text='Calendarios de exámenes', callback_data='pdi_exam_calendar')],
+            [InlineKeyboardButton(text='Calendario Académico', url='https://esingenieria.uca.es/wp-content/uploads/2021/05/Calendario-Academico-2021-22-ESI.pdf')],
+            [InlineKeyboardButton(text='Formulario de incidencia docente', url='https://esingenieria.uca.es/ordenacion-pdi/'), InlineKeyboardButton(text='Horarios por áreas', url='https://esingenieria.uca.es/ordenacion-pdi/')],
+            [InlineKeyboardButton(text='Guía para los programas docentes', url='https://esingenieria.uca.es/wp-content/uploads/2021/06/Indicaciones_Programas_Docentes_ESI%20_v2.pdf'), InlineKeyboardButton(text='Acceso a GOA', url='https://goa.uca.es/')],
+            [InlineKeyboardButton(text='Acceso al Sistema de Información', url='https://sistemadeinformacion.uca.es/'), InlineKeyboardButton(text='SIRE', url='https://sire.uca.es/')],
+            [InlineKeyboardButton(text='Web Ordenación Académica ESI', url='https://esingenieria.uca.es/ordenacion/')],
+            [InlineKeyboardButton(text='Volver', callback_data='PDI_menu_spanish_go_back')]
+        ]),
+        parse_mode='Markdown'
+    )
     
 def PDI_menu_english(update, context):
      # Horarios
@@ -719,10 +579,10 @@ def menu_PAS(update, context):
     #Prueba
     dp.add_handler(CallbackQueryHandler(pattern='consulta_sire', callback=consulta_sire))
 
-    if(update.callback_query == None):
-
-        update.message.reply_text(
-            text = '*Bienvenid@ al menu PAS*',
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = '*Bienvenid@ al menu PAS*',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Noticias ESI', url='https://esingenieria.uca.es/noticia/')],
             [InlineKeyboardButton(text='Horarios', callback_data='pas_timetable'), InlineKeyboardButton(text='Calendarios de exámenes', callback_data='pas_exam_calendar')],
@@ -730,29 +590,11 @@ def menu_PAS(update, context):
             [InlineKeyboardButton(text='CAU de Reparación', url='https://cau-infraestructuras.uca.es/cau/grupoServicios.do?id=M01'),InlineKeyboardButton(text='CAU de Climatización', url='https://cau-infraestructuras.uca.es/cau/grupoServicios.do?id=M07')],
             [InlineKeyboardButton(text='Directorio', url='https://directorio.uca.es/'), InlineKeyboardButton(text='SIRE', url='https://sire.uca.es/')],
             [InlineKeyboardButton(text='Web Ordenación Académica ESI', url='https://esingenieria.uca.es/ordenacion/')],
-            # [InlineKeyboardButton(text='Consulta sire', callback_data='consulta_sire')],
+            [InlineKeyboardButton(text='Consulta sire', callback_data='consulta_sire')],
             [InlineKeyboardButton(text='Volver', callback_data='PAS_menu_spanish_go_back')]
         ]),
         parse_mode='Markdown'
     )
-    
-    else:
-        query = update.callback_query
-        query.answer()
-        query.edit_message_text(
-            text = '*Bienvenid@ al menu PAS*',
-            reply_markup = InlineKeyboardMarkup([
-                [InlineKeyboardButton(text='Noticias ESI', url='https://esingenieria.uca.es/noticia/')],
-                [InlineKeyboardButton(text='Horarios', callback_data='pas_timetable'), InlineKeyboardButton(text='Calendarios de exámenes', callback_data='pas_exam_calendar')],
-                [InlineKeyboardButton(text='CAU de Infraestructuras', url='https://cau-infraestructuras.uca.es/cau/index.do')],
-                [InlineKeyboardButton(text='CAU de Reparación', url='https://cau-infraestructuras.uca.es/cau/grupoServicios.do?id=M01'),InlineKeyboardButton(text='CAU de Climatización', url='https://cau-infraestructuras.uca.es/cau/grupoServicios.do?id=M07')],
-                [InlineKeyboardButton(text='Directorio', url='https://directorio.uca.es/'), InlineKeyboardButton(text='SIRE', url='https://sire.uca.es/')],
-                [InlineKeyboardButton(text='Web Ordenación Académica ESI', url='https://esingenieria.uca.es/ordenacion/')],
-                [InlineKeyboardButton(text='Consulta sire', callback_data='consulta_sire')],
-                [InlineKeyboardButton(text='Volver', callback_data='PAS_menu_spanish_go_back')]
-            ]),
-            parse_mode='Markdown'
-        )
 
     
 def PAS_menu_english(update, context):
@@ -848,31 +690,7 @@ def first_menu(update, context):
                 ]),
                 parse_mode='Markdown'
             )
-    # # else:
-    # if(update.callback_query == None):
 
-    #     update.message.reply_text(
-    #         text = '*Welcome to the ESI-UCA Academic Planning Bot* \nSelect an option',
-    #         reply_markup = InlineKeyboardMarkup([
-    #             [InlineKeyboardButton(text='Spanish', callback_data='selected_idiom_spanish')],
-    #             [InlineKeyboardButton(text='English', callback_data='selected_idiom_english')]
-    #         ]),
-    #         parse_mode='Markdown'
-    #     )
-            
-    # else:
-        
-    #     query = update.callback_query
-    #     query.answer()
-    #     query.edit_message_text(
-    #         text = '*Welcome to the ESI-UCA Academic Planning Bot* \nSelect an option',
-    #         reply_markup = InlineKeyboardMarkup([
-    #             [InlineKeyboardButton(text='Spanish', callback_data='selected_idiom_spanish')], 
-    #             [InlineKeyboardButton(text='English', callback_data='selected_idiom_english')]
-    #         ]),
-    #         parse_mode='Markdown'
-    #     )
-    
 def second_menu_spanish(update, context):
     
     dp.add_handler(CallbackQueryHandler(pattern='selected_student', callback=menu_estudiante))
