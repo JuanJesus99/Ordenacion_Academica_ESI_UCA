@@ -5,36 +5,34 @@ from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 import general
 
 def start_llamamiento_especial(update, context):
-    
-    if(update.callback_query == None):
-        update.message.reply_text(
-            text = 'Es una fecha para examinarse de una asignatura que te coincide con otra en el calendario oficial',
-            reply_markup = InlineKeyboardMarkup([
-                [InlineKeyboardButton(text='¿Cómo y cuándo puedo solicitarlo?', callback_data='llamamiento_especial_periodo')],
-                [InlineKeyboardButton(text='¿Cuándo y cuáles serán los exámenes con llamamiento?', callback_data='llamamiento_especial_examenes')],
-                [InlineKeyboardButton(text='¿Qué tengo que llevar al día del examen de llamamiento?', callback_data='llamamiento_especial_requisitos')],
-                [InlineKeyboardButton(text='¿Puedo presentarme aunque no haya rellenado el formulario?', callback_data='llamamiento_especial_presentarmeSinFormulario')],
-                [InlineKeyboardButton(text='Volver', callback_data='student_spanish_go_back')]
-            ])
-        )
-    
-    else:
-        query = update.callback_query
-        query.answer()
-        query.edit_message_text(
-            text = 'Es una fecha para examinarse de una asignatura que te coincide con otra en el calendario oficial',
-            reply_markup = InlineKeyboardMarkup([
-                [InlineKeyboardButton(text='¿Cómo y cuándo puedo solicitarlo?', callback_data='llamamiento_especial_periodo')],
-                [InlineKeyboardButton(text='¿Cuándo y cuáles serán los exámenes con llamamiento?', callback_data='llamamiento_especial_examenes')],
-                [InlineKeyboardButton(text='¿Qué tengo que llevar al día del examen de llamamiento?', callback_data='llamamiento_especial_requisitos')],
-                [InlineKeyboardButton(text='¿Puedo presentarme aunque no haya rellenado el formulario?', callback_data='llamamiento_especial_presentarmeSinFormulario')],
-                [InlineKeyboardButton(text='Volver', callback_data='student_spanish_go_back')]
-            ])
-        )
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'Es una fecha para examinarse de una asignatura que te coincide con otra en el calendario oficial',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='¿Cómo y cuándo puedo solicitarlo?', callback_data='llamamiento_especial_periodo')],
+            [InlineKeyboardButton(text='¿Cuándo y cuáles serán los exámenes con llamamiento?', callback_data='llamamiento_especial_examenes')],
+            [InlineKeyboardButton(text='¿Qué tengo que llevar al día del examen de llamamiento?', callback_data='llamamiento_especial_requisitos')],
+            [InlineKeyboardButton(text='¿Puedo presentarme aunque no haya rellenado el formulario?', callback_data='llamamiento_especial_presentarmeSinFormulario')],
+            [InlineKeyboardButton(text='Volver', callback_data='student_spanish_go_back')]
+        ])
+    )
    
+def special_call_start_english(update, context):
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'It is a date for examining a subject that coincides with another in the official calendar',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='How and when can I apply?', callback_data='special_call_periodo_english')],
+            [InlineKeyboardButton(text='When and which exams will be called?', callback_data='special_call_examenes_english')],
+            [InlineKeyboardButton(text='What do I have to bring with me on the day of the exam?', callback_data='special_call_requisitos_english')],
+            [InlineKeyboardButton(text='Can I sit the exam even if I have not filled in the form?', callback_data='special_call_presentarmeSinFormulario_english')],
+            [InlineKeyboardButton(text='Go back', callback_data='student_english_go_back')]
+        ])
+    )
+
 def callback_llamamiento_especial_periodo(update, context):
-    
-    
     query = update.callback_query
     query.answer()
     query.edit_message_text(
@@ -43,16 +41,34 @@ def callback_llamamiento_especial_periodo(update, context):
             [InlineKeyboardButton(text='Volver', callback_data='inicio_llamamiento_especial')]
         ])
     )
-        
 
-def callback_llamamiento_especial_examenes(update, context):
-
+def callback_special_call_periodo_english(update, context):
     query = update.callback_query
     query.answer()
     query.edit_message_text(
-        text = 'Unos días después de que se cierre el plazo dado en el formulario, se publicará el calendario y alumnos incluidos. En cualquier caso, los días de llamamiento son después del último examen que aparece en el calendario.',
+        text = 'Some time after the exam calendar is published, you will receive a TAVIRA (to your official mail) to fill in a form. In the form you will have to mark all the subjects that coincide with yours and that you want to take',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Go back', callback_data='special_call_start_english')]
+        ])
+    )
+
+def callback_llamamiento_especial_examenes(update, context):
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'Unos días después de que se cierre el plazo dado en el formulario, se publicará el calendario y alumnos incluidos. En cualquier caso, los días de llamamiento son después del último examen que aparece en el calendario',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Volver', callback_data='inicio_llamamiento_especial')]
+        ])
+    )
+
+def callback_special_call_examenes_english(update, context):
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'A few days after the deadline given on the form, the calendar and the students included will be published. In any case, the call days are after the last exam that appears in the calendar.',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Go back', callback_data='special_call_start_english')]
         ])
     )
         
@@ -67,7 +83,16 @@ def callback_llamamiento_especial_requisitos(update, context):
             [InlineKeyboardButton(text='Volver', callback_data='inicio_llamamiento_especial')]
         ])
     )
-        
+
+def callback_special_call_requisitos_english(update, context):
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'You must bring the signed proof of having taken the other exam that coincided with your exam',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Go back', callback_data='special_call_start_english')]
+        ])
+    )
 
 def callback_llamamiento_especial_presentarmeSinFormulario(update, context):
     query = update.callback_query
@@ -76,5 +101,15 @@ def callback_llamamiento_especial_presentarmeSinFormulario(update, context):
         text = 'No es lo recomendado pero si te coincide con otro examen, sí puedes presentarte si vas con el justificante firmado.',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Volver', callback_data='inicio_llamamiento_especial')]
+        ])
+    )
+
+def callback_special_call_presentarmeSinFormulario_english(update, context):
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'It is not recommended, but if it coincides with another exam, you can sit it if you bring the signed receipt',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Go back', callback_data='special_call_start_english')]
         ])
     )

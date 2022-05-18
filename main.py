@@ -285,8 +285,12 @@ def menu_estudiante(update, context):
     dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_diferencias', callback=practice.callback_practicas_extracurriculares_diferencias))
     
     
-    # Alumnos Colaboradores
+    # Movilidad
+    dp.add_handler(CallbackQueryHandler(pattern='inicio_movilidad', callback=movilidad.start_movilidad))
+    dp.add_handler(CallbackQueryHandler(pattern='movilidad_otras_movilidades', callback=movilidad.callback_movilidad_otras_movilidades))
     
+    
+    # Alumnos Colaboradores
     dp.add_handler(CallbackQueryHandler(pattern='student_collaborating_students', callback=collaborating_students.student_collaborating_students))
     
     
@@ -302,9 +306,7 @@ def menu_estudiante(update, context):
     
     
     
-    # Movilidad
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_movilidad', callback=movilidad.start_movilidad))
-    dp.add_handler(CallbackQueryHandler(pattern='movilidad_otras_movilidades', callback=movilidad.movilidad_otras_movilidades))
+   
 
 
 
@@ -392,23 +394,21 @@ def student_menu_english(update, context):
 
 
     #Llamamiento Especial
-    # dp.add_handler(CommandHandler('llamamiento_especial', llamamiento_especial.start_llamamiento_especial))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_llamamiento_especial', callback=special_call.start_llamamiento_especial))
-    dp.add_handler(CallbackQueryHandler(pattern='llamamiento_especial_periodo', callback=special_call.callback_llamamiento_especial_periodo))
-    dp.add_handler(CallbackQueryHandler(pattern='llamamiento_especial_requisitos', callback=special_call.callback_llamamiento_especial_requisitos))
-    dp.add_handler(CallbackQueryHandler(pattern='llamamiento_especial_examenes', callback=special_call.callback_llamamiento_especial_examenes))
-    dp.add_handler(CallbackQueryHandler(pattern='llamamiento_especial_presentarmeSinFormulario', callback=special_call.callback_llamamiento_especial_presentarmeSinFormulario))
+    dp.add_handler(CallbackQueryHandler(pattern='special_call_start_english', callback=special_call.special_call_start_english))
+    dp.add_handler(CallbackQueryHandler(pattern='special_call_periodo_english', callback=special_call.callback_special_call_periodo_english))
+    dp.add_handler(CallbackQueryHandler(pattern='special_call_examenes_english', callback=special_call.callback_special_call_examenes_english))
+    dp.add_handler(CallbackQueryHandler(pattern='special_call_requisitos_english', callback=special_call.callback_special_call_requisitos_english))
+    dp.add_handler(CallbackQueryHandler(pattern='special_call_presentarmeSinFormulario_english', callback=special_call.callback_special_call_presentarmeSinFormulario_english))
+
 
     # Convocatoria Diciembre
-    # dp.add_handler(CommandHandler('convocatoria_diciembre', convocatoria_diciembre.start_conv_diciembre))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_conv_diciembre', callback=december_exams.start_conv_diciembre))
-    dp.add_handler(CallbackQueryHandler(pattern='conv_diciembre_periodo', callback=december_exams.callback_conv_diciembre_periodo))
-    dp.add_handler(CallbackQueryHandler(pattern='conv_diciembre_requisitos', callback=december_exams.callback_conv_diciembre_requisitos))
+    dp.add_handler(CallbackQueryHandler(pattern='december_call_start_english', callback=december_exams.december_call_start_english))
+    dp.add_handler(CallbackQueryHandler(pattern='december_call_periodo_english', callback=december_exams.callback_december_call_periodo_english))
+    dp.add_handler(CallbackQueryHandler(pattern='december_call_requisitos_english', callback=december_exams.callback_december_call_requisitos_english))
 
 
     # Asignacion de grupos
-    # dp.add_handler(CommandHandler('asignacion_grupos', asignacion_grupos.start_asignacion_grupos))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_group_assignment', callback=group_assignment.start_group_assignment))
+    dp.add_handler(CallbackQueryHandler(pattern='group_assignment_start_english', callback=group_assignment.group_assignment_start_english))
     
     
     # Practicas
@@ -447,9 +447,13 @@ def student_menu_english(update, context):
     dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_diferencias', callback=practice.callback_practicas_extracurriculares_diferencias))
     
     
-    # Alumnos Colaboradores
     
-    dp.add_handler(CallbackQueryHandler(pattern='student_collaborating_students', callback=collaborating_students.student_collaborating_students))
+    # Movilidad
+    dp.add_handler(CallbackQueryHandler(pattern='mobility_start_english', callback=movilidad.mobility_start_english))
+    dp.add_handler(CallbackQueryHandler(pattern='mobility_otras_movilidades_english', callback=movilidad.callback_mobility_otras_movilidades_english))
+    
+    # Alumnos Colaboradores
+    dp.add_handler(CallbackQueryHandler(pattern='collaborating_students_start_english', callback=collaborating_students.collaborating_students_start_english))
     
     
     # Evaluacion por compensacion
@@ -464,9 +468,6 @@ def student_menu_english(update, context):
     
     
     
-    # Movilidad
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_movilidad', callback=movilidad.start_movilidad))
-    dp.add_handler(CallbackQueryHandler(pattern='movilidad_otras_movilidades', callback=movilidad.movilidad_otras_movilidades))
 
 
 
@@ -489,10 +490,10 @@ def student_menu_english(update, context):
             [InlineKeyboardButton(text='ESI news', url='https://esingenieria.uca.es/noticia/')],
             [InlineKeyboardButton(text='Timetables', callback_data='student_timetable_english'),InlineKeyboardButton(text='Exams calendars', callback_data='student_exam_calendar_english')],
             [InlineKeyboardButton(text='TFG/M', callback_data='tfg_start_english'), InlineKeyboardButton(text='Tutorials', callback_data='student_start_tutorships_english')],
-            [InlineKeyboardButton(text='Global assessment', callback_data='global_assessment_start_english'), InlineKeyboardButton(text='Special call', callback_data='inicio_llamamiento_especial')],
-            [InlineKeyboardButton(text='December call', callback_data='inicio_conv_diciembre'),InlineKeyboardButton(text='Group assigment', callback_data='inicio_group_assignment')],
-            [InlineKeyboardButton(text='Internships', callback_data='start_practice'), InlineKeyboardButton(text='Mobility', callback_data='inicio_movilidad')],
-            [InlineKeyboardButton(text='Collaborating studing', callback_data='student_collaborating_students'), InlineKeyboardButton(text='Assesment by compensation', callback_data='start_compensacion')],
+            [InlineKeyboardButton(text='Global assessment', callback_data='global_assessment_start_english'), InlineKeyboardButton(text='Special call', callback_data='special_call_start_english')],
+            [InlineKeyboardButton(text='December call', callback_data='december_call_start_english'),InlineKeyboardButton(text='Group assigment', callback_data='group_assignment_start_english')],
+            [InlineKeyboardButton(text='Internships', callback_data='start_practice'), InlineKeyboardButton(text='Mobility', callback_data='mobility_start_english')],
+            [InlineKeyboardButton(text='Collaborating studing', callback_data='collaborating_students_start_english'), InlineKeyboardButton(text='Assesment by compensation', callback_data='start_compensacion')],
             [InlineKeyboardButton(text='ESI Academic Planning website', url='https://esingenieria.uca.es/ordenacion/')],
             [InlineKeyboardButton(text='Go back', callback_data='student_menu_english_go_back')]
         ]),
