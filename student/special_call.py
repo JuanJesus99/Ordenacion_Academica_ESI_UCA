@@ -14,6 +14,8 @@ def start_llamamiento_especial(update, context):
             [InlineKeyboardButton(text='¿Cuándo y cuáles serán los exámenes con llamamiento?', callback_data='llamamiento_especial_examenes')],
             [InlineKeyboardButton(text='¿Qué tengo que llevar al día del examen de llamamiento?', callback_data='llamamiento_especial_requisitos')],
             [InlineKeyboardButton(text='¿Puedo presentarme aunque no haya rellenado el formulario?', callback_data='llamamiento_especial_presentarmeSinFormulario')],
+            [InlineKeyboardButton(text='Salgo en la lista pero al final, he decidido hacer únicamente el examen de la convocatoria ordinaria, ¿puedo?', callback_data='llamamiento_especial_ordinaria')],
+            [InlineKeyboardButton(text='¿Puedo presentarme al llamamiento si no me coincide con otro examen?', callback_data='llamamiento_especial_sino_coincide')],
             [InlineKeyboardButton(text='Volver', callback_data='student_spanish_go_back')]
         ])
     )
@@ -28,6 +30,8 @@ def special_call_start_english(update, context):
             [InlineKeyboardButton(text='When and which exams will be called?', callback_data='special_call_examenes_english')],
             [InlineKeyboardButton(text='What do I have to bring with me on the day of the exam?', callback_data='special_call_requisitos_english')],
             [InlineKeyboardButton(text='Can I sit the exam even if I have not filled in the form?', callback_data='special_call_presentarmeSinFormulario_english')],
+            [InlineKeyboardButton(text='I am on the list but in the end, I have decided to take only the exam for the ordinary exam, can I do it?', callback_data='special_call_ordinaria_english')],
+            [InlineKeyboardButton(text='Can I sit the call if it does not coincide with another exam?', callback_data='special_call_sino_coincide_english')],
             [InlineKeyboardButton(text='Go back', callback_data='student_english_go_back')]
         ])
     )
@@ -109,6 +113,46 @@ def callback_special_call_presentarmeSinFormulario_english(update, context):
     query.answer()
     query.edit_message_text(
         text = 'It is not recommended, but if it coincides with another exam, you can sit it if you bring the signed receipt',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Go back', callback_data='special_call_start_english')]
+        ])
+    )
+
+def callback_llamamiento_especial_ordinaria(update, context):
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'Sí',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Volver', callback_data='inicio_llamamiento_especial')]
+        ])
+    )
+
+def callback_special_call_ordinaria_english(update, context):
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'Yes',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Go back', callback_data='special_call_start_english')]
+        ])
+    )
+
+def callback_llamamiento_especial_sino_coincide(update, context):
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'No',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Volver', callback_data='inicio_llamamiento_especial')]
+        ])
+    )
+
+def callback_special_call_sino_coincide_english(update, context):
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'No',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Go back', callback_data='special_call_start_english')]
         ])
