@@ -10,7 +10,7 @@ import io
 import lxml
 import getpass
 
-import general, timetable, exam_calendar, tutorships
+import general, timetable, exam_calendar
 
 from student import tfg, global_evaluation, special_call, december_exams, group_assignment, practice, collaborating_students, compensation_evaluation, movilidad
 
@@ -297,8 +297,12 @@ def menu_estudiante(update, context):
     
     
     # Evaluacion por compensacion
-    # dp.add_handler(CommandHandler('compensacion', evaluacion_compensacion.start_compensacion))
     dp.add_handler(CallbackQueryHandler(pattern='start_compensacion', callback=compensation_evaluation.start_compensacion))
+
+    dp.add_handler(CallbackQueryHandler(pattern='inicio_compensacion_habilitantes', callback=compensation_evaluation.start_compensacion_habilitantes))
+    dp.add_handler(CallbackQueryHandler(pattern='compensacion_habilitantes_periodo', callback=compensation_evaluation.callback_compensacion_habilitantes_periodo))
+    dp.add_handler(CallbackQueryHandler(pattern='compensacion_habilitantes_requisitos', callback=compensation_evaluation.callback_compensacion_habilitantes_requisitos))
+
     dp.add_handler(CallbackQueryHandler(pattern='inicio_comnpensacion_no_habilitantes', callback=compensation_evaluation.start_compensacion_no_habilitantes))
     dp.add_handler(CallbackQueryHandler(pattern='compensacion_periodo', callback=compensation_evaluation.callback_compensacion_periodo))
     dp.add_handler(CallbackQueryHandler(pattern='compensacion_requisitos', callback=compensation_evaluation.callback_compensacion_requisitos))
@@ -419,33 +423,26 @@ def student_menu_english(update, context):
     dp.add_handler(CallbackQueryHandler(pattern='mobility_start_english', callback=movilidad.mobility_start_english))
     dp.add_handler(CallbackQueryHandler(pattern='mobility_otras_movilidades_english', callback=movilidad.callback_mobility_otras_movilidades_english))
     
+
     # Alumnos Colaboradores
     dp.add_handler(CallbackQueryHandler(pattern='collaborating_students_start_english', callback=collaborating_students.collaborating_students_start_english))
     
     
     # Evaluacion por compensacion
-    # dp.add_handler(CommandHandler('compensacion', evaluacion_compensacion.start_compensacion))
-    dp.add_handler(CallbackQueryHandler(pattern='start_compensacion', callback=compensation_evaluation.start_compensacion))
-    dp.add_handler(CallbackQueryHandler(pattern='inicio_comnpensacion_no_habilitantes', callback=compensation_evaluation.start_compensacion_no_habilitantes))
-    dp.add_handler(CallbackQueryHandler(pattern='compensacion_periodo', callback=compensation_evaluation.callback_compensacion_periodo))
-    dp.add_handler(CallbackQueryHandler(pattern='compensacion_requisitos', callback=compensation_evaluation.callback_compensacion_requisitos))
-    dp.add_handler(CallbackQueryHandler(pattern='compensacion_req_especificos', callback=compensation_evaluation.callback_compensacion_req_especificos))
-    
-    # dp.add_handler(CallbackQueryHandler(pattern='student_spanish_compensacion_go_back', callback=compensation_evaluation.callback_compensacion_req_especificos))
-    
-    
-    
+    dp.add_handler(CallbackQueryHandler(pattern='compensation_evaluation_start_english', callback=compensation_evaluation.compensation_evaluation_start_english))
 
+    dp.add_handler(CallbackQueryHandler(pattern='compensation_evaluation_qualifying_english', callback=compensation_evaluation.compensation_evaluation_qualifying_english))
+    dp.add_handler(CallbackQueryHandler(pattern='compensation_evaluation_qualifying_periodo_english', callback=compensation_evaluation.callback_compensation_evaluation_qualifying_periodo_english))
+    dp.add_handler(CallbackQueryHandler(pattern='compensation_evaluation_qualifying_requisitos_english', callback=compensation_evaluation.callback_compensation_evaluation_qualifying_requisitos_english))
 
-
-    # Volver atras
-    # dp.add_handler(CallbackQueryHandler(pattern='student_spanish_go_back', callback=menu_estudiante))
-    
+    dp.add_handler(CallbackQueryHandler(pattern='compensation_evaluation_nonqualifying_english', callback=compensation_evaluation.compensation_evaluation_nonqualifying_english))
+    dp.add_handler(CallbackQueryHandler(pattern='compensation_evaluation_nonqualifying_periodo_english', callback=compensation_evaluation.callback_compensation_evaluation_nonqualifying_periodo_english))
+    dp.add_handler(CallbackQueryHandler(pattern='compensation_evaluation_nonqualifying_requisitos_english', callback=compensation_evaluation.callback_compensation_evaluation_nonqualifying_requisitos_english))
+    dp.add_handler(CallbackQueryHandler(pattern='compensation_evaluation_nonqualifying_especificos_english', callback=compensation_evaluation.callback_compensation_evaluation_nonqualifying_requisitos_especificos_english))
     
     
     # Volver atras
     dp.add_handler(CallbackQueryHandler(pattern='student_english_go_back', callback=student_menu_english))
-    
     dp.add_handler(CallbackQueryHandler(pattern='student_menu_english_go_back', callback=second_menu_english))
     
     
@@ -460,10 +457,10 @@ def student_menu_english(update, context):
             [InlineKeyboardButton(text='Global assessment', callback_data='global_assessment_start_english'), InlineKeyboardButton(text='Special call', callback_data='special_call_start_english')],
             [InlineKeyboardButton(text='December call', callback_data='december_call_start_english'),InlineKeyboardButton(text='Group assigment', callback_data='group_assignment_start_english')],
             [InlineKeyboardButton(text='Internships', callback_data='practice_start_english'), InlineKeyboardButton(text='Mobility', callback_data='mobility_start_english')],
-            [InlineKeyboardButton(text='Collaborating studing', callback_data='collaborating_students_start_english'), InlineKeyboardButton(text='Assesment by compensation', callback_data='start_compensacion')],
+            [InlineKeyboardButton(text='Collaborating studing', callback_data='collaborating_students_start_english'), InlineKeyboardButton(text='Assesment by compensation', callback_data='compensation_evaluation_start_english')],
             [InlineKeyboardButton(text='SIRE', url='https://sire.uca.es/'), InlineKeyboardButton(text='Academic records', url='https://portalservicios.uca.es/ServiciosApp/')],
             [InlineKeyboardButton(text='ESI Academic Planning website', url='https://esingenieria.uca.es/ordenacion-estudiantes/')],
-            [InlineKeyboardButton(text='Go back', callback_data='student_menu_english_go_back')]
+            [InlineKeyboardButton(text='Back', callback_data='student_menu_english_go_back')]
         ]),
         parse_mode='Markdown'
     )
@@ -523,7 +520,7 @@ def PDI_menu_english(update, context):
             [InlineKeyboardButton(text='Guide to teaching programmes', url='https://esingenieria.uca.es/wp-content/uploads/2021/06/Indicaciones_Programas_Docentes_ESI%20_v2.pdf'), InlineKeyboardButton(text='Access to GOA', url='https://goa.uca.es/')],
             [InlineKeyboardButton(text='Access to the Information System', url='https://sistemadeinformacion.uca.es/'), InlineKeyboardButton(text='SIRE', url='https://sire.uca.es/')],
             [InlineKeyboardButton(text='ESI Academic Planning website', url='https://esingenieria.uca.es/ordenacion-pdi/')],
-            [InlineKeyboardButton(text='Go back', callback_data='PDI_menu_english_go_back')]
+            [InlineKeyboardButton(text='Back', callback_data='PDI_menu_english_go_back')]
         ]),
         parse_mode='Markdown'
     )
@@ -596,7 +593,7 @@ def PAS_menu_english(update, context):
             [InlineKeyboardButton(text='Directory', url='https://directorio.uca.es/'), InlineKeyboardButton(text='SIRE', url='https://sire.uca.es/')],
             [InlineKeyboardButton(text='ESI Academic Planning website', url='https://esingenieria.uca.es/ordenacion-pdi/')],
             [InlineKeyboardButton(text='Consulta sire', callback_data='consulta_sire')],
-            [InlineKeyboardButton(text='Go back', callback_data='PAS_menu_english_go_back')]
+            [InlineKeyboardButton(text='Back', callback_data='PAS_menu_english_go_back')]
         ]),
         parse_mode='Markdown'
     )
@@ -699,7 +696,7 @@ def second_menu_english(update, context):
             [InlineKeyboardButton(text='Student', callback_data='selected_student_english')],
             [InlineKeyboardButton(text='PDI', callback_data='selected_PDI_english')],
             [InlineKeyboardButton(text='PAS', callback_data='selected_PAS_english')],
-            [InlineKeyboardButton(text='Go back', callback_data='selected_second_menu_go_back')]
+            [InlineKeyboardButton(text='Back', callback_data='selected_second_menu_go_back')]
         ]),
         parse_mode='Markdown'
     )  

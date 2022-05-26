@@ -16,18 +16,6 @@ def start_conv_diciembre(update, context):
             [InlineKeyboardButton(text='Volver', callback_data='student_spanish_go_back')]
         ])
     )
-    
-def december_call_start_english(update, context):
-    query = update.callback_query
-    query.answer()
-    query.edit_message_text(
-        text = 'This is an extraordinary call for applications in December',
-        reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton(text='Application period', callback_data='december_call_periodo_english')],
-            [InlineKeyboardButton(text='Requirements', callback_data='december_call_requisitos_english'),InlineKeyboardButton(text='CAU', url='https://cau-admpr.uca.es/cau/servicio.do?id=U027')],
-            [InlineKeyboardButton(text='Go back', callback_data='student_english_go_back')]
-        ])
-    )
    
 def callback_conv_diciembre_periodo(update, context):
     query = update.callback_query
@@ -39,16 +27,6 @@ def callback_conv_diciembre_periodo(update, context):
         ])
     )
     
-def callback_december_call_periodo_english(update, context):
-    query = update.callback_query
-    query.answer()
-    query.edit_message_text(
-        text = 'The deadline to apply for the right to sit the exam in December is the first fortnight of November',
-        reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton(text='Go back', callback_data='december_call_start_english')]
-        ])
-    )
-        
 def callback_conv_diciembre_requisitos(update, context):
     
     query = update.callback_query
@@ -60,6 +38,30 @@ def callback_conv_diciembre_requisitos(update, context):
             [InlineKeyboardButton(text='Volver', callback_data='inicio_conv_diciembre')]
         ])
     )
+
+# Ingles
+
+def december_call_start_english(update, context):
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'This is an extraordinary call for applications in December',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Application period', callback_data='december_call_periodo_english')],
+            [InlineKeyboardButton(text='Requirements', callback_data='december_call_requisitos_english'),InlineKeyboardButton(text='CAU', url='https://cau-admpr.uca.es/cau/servicio.do?id=U027')],
+            [InlineKeyboardButton(text='Back', callback_data='student_english_go_back')]
+        ])
+    )
+
+def callback_december_call_periodo_english(update, context):
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'The deadline to apply for the right to sit the exam in December is the first fortnight of November',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Back', callback_data='december_call_start_english')]
+        ])
+    )
     
 def callback_december_call_requisitos_english(update, context):
     query = update.callback_query
@@ -68,7 +70,6 @@ def callback_december_call_requisitos_english(update, context):
         text = 'BACHELOR`S DEGREES: \n\nStudents who have 40 or less credits left to finish their studies or, alternatively, have a maximum of 3 subjects left to finish their studies, even if these together exceed the indicated credits (including the TFG), may apply for the right to take the exam'
                 '\n\n\n\nMASTER`S DEGREES: \n\nStudents who have 9 credits or less of the course load of the degree (excluding the TFM) may apply for it',
         reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton(text='Go back', callback_data='december_call_start_english')]
+            [InlineKeyboardButton(text='Back', callback_data='december_call_start_english')]
         ])
     )
-        

@@ -15,19 +15,6 @@ def start_evaluacion_global(update, context):
             [InlineKeyboardButton(text='Volver', callback_data='student_spanish_go_back')]
         ])
     )
-    
-def global_assessment_start_english(update, context):
-    
-    query = update.callback_query
-    query.answer()
-    query.edit_message_text(
-        text = 'This is an evaluation format in which the student waives the method established in the subject record and takes a set of tests established by the teaching team of the subject. This method cannot be requested for the first sitting of the course',
-        reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton(text='How and when can I apply for it?', callback_data='global_assessment_periodo_english')],
-            [InlineKeyboardButton(text='Go back', callback_data='student_english_go_back')]
-        ])
-    )
-
 
 def callback_evaluacion_global_periodo(update, context):
     
@@ -40,15 +27,27 @@ def callback_evaluacion_global_periodo(update, context):
             [InlineKeyboardButton(text='Volver', callback_data='inicio_evaluacion_global')]
         ])
     )
+
+# Ingles
+    
+def global_assessment_start_english(update, context):
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        text = 'This is an evaluation format in which the student waives the method established in the subject record and takes a set of tests established by the teaching team of the subject. This method cannot be requested for the first sitting of the course',
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='How and when can I apply for it?', callback_data='global_assessment_periodo_english')],
+            [InlineKeyboardButton(text='Back', callback_data='student_english_go_back')]
+        ])
+    )
     
 def callback_global_assessment_periodo_english(update, context):
-    
     query = update.callback_query
     query.answer()
     query.edit_message_text(
         text = 'It is requested to the person in charge of the subject by e-mail. The deadline is indicated in the following document',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Link to the document', url='https://esingenieria.uca.es/wp-content/uploads/2019/01/Evaluacionglobal.pdf')],
-            [InlineKeyboardButton(text='Go back', callback_data='global_assessment_start_english')]
+            [InlineKeyboardButton(text='Back', callback_data='global_assessment_start_english')]
         ])
     )

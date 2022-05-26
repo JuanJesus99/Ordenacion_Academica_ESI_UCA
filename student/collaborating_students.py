@@ -22,6 +22,6 @@ def collaborating_students_start_english(update, context):
         text = 'Through the figure of the collaborating student, the aim is to stimulate the participation of students in departmental activities, facilitating their initiation to research tasks. It also makes it possible for them to participate in teaching functions, without it ever being understood that the collaborating student is the one who teaches the regulated theoretical and practical classes, a task that corresponds exclusively to the lecturer',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Regulations', url='https://secretariageneral.uca.es/docs/Unidades/normativa/alumnos/969.pdf')],
-            [InlineKeyboardButton(text='Go back', callback_data='student_english_go_back')]
+            [InlineKeyboardButton(text='Back', callback_data='student_english_go_back')]
         ])
     )

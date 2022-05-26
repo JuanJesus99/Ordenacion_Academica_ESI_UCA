@@ -40,7 +40,7 @@ def student_timetable_english(update, context):
             [InlineKeyboardButton(text='Double Degree in Electrical Engineering and Industrial Electronic Engineering', url='https://drive.google.com/file/d/17jjbGYBhNmAdGaYeS8Su33QYjcWavZ-8/view')],
             [InlineKeyboardButton(text='Double Degree in Mechanical Engineering and Electrical Engineering', url='https://drive.google.com/file/d/1bCwfIBbOsFCO6mcPsWipXac0an5CgA7H/view')],
             [InlineKeyboardButton(text='Double Degree in Mechanical Engineering and Engineering Industrial Design and Product Development Engineering', url='https://drive.google.com/file/d/1XyDJl1W4wbi7EUi6ctmFmjUue8-Nqgoo/view')],
-            [InlineKeyboardButton(text='Go back', callback_data='student_english_go_back')]
+            [InlineKeyboardButton(text='Back', callback_data='student_english_go_back')]
         ])
     )      
         
@@ -81,7 +81,7 @@ def pdi_timetable_english(update, context):
             [InlineKeyboardButton(text='Double Degree in Electrical Engineering and Industrial Electronic Engineering', url='https://drive.google.com/file/d/17jjbGYBhNmAdGaYeS8Su33QYjcWavZ-8/view')],
             [InlineKeyboardButton(text='Double Degree in Mechanical Engineering and Electrical Engineering', url='https://drive.google.com/file/d/1bCwfIBbOsFCO6mcPsWipXac0an5CgA7H/view')],
             [InlineKeyboardButton(text='Double Degree in Mechanical Engineering and Engineering Industrial Design and Product Development Engineering', url='https://drive.google.com/file/d/1XyDJl1W4wbi7EUi6ctmFmjUue8-Nqgoo/view')],
-            [InlineKeyboardButton(text='Go back', callback_data='PDI_english_go_back')]
+            [InlineKeyboardButton(text='Back', callback_data='PDI_english_go_back')]
         ])
     )
        
@@ -122,6 +122,6 @@ def pas_timetable_english(update, context):
             [InlineKeyboardButton(text='Double Degree in Electrical Engineering and Industrial Electronic Engineering', url='https://drive.google.com/file/d/17jjbGYBhNmAdGaYeS8Su33QYjcWavZ-8/view')],
             [InlineKeyboardButton(text='Double Degree in Mechanical Engineering and Electrical Engineering', url='https://drive.google.com/file/d/1bCwfIBbOsFCO6mcPsWipXac0an5CgA7H/view')],
             [InlineKeyboardButton(text='Double Degree in Mechanical Engineering and Engineering Industrial Design and Product Development Engineering', url='https://drive.google.com/file/d/1XyDJl1W4wbi7EUi6ctmFmjUue8-Nqgoo/view')],
-            [InlineKeyboardButton(text='Go back', callback_data='PAS_english_go_back')]
+            [InlineKeyboardButton(text='Back', callback_data='PAS_english_go_back')]
         ])
     )

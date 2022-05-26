@@ -42,6 +42,6 @@ def group_assignment_start_english(update, context):
             [InlineKeyboardButton(text='Double Degree in Electrical Engineering and Industrial Electronic Engineering', url='https://esingenieria.uca.es/docencia/grados/giegiei/calendarios-y-convocatorias/')],
             [InlineKeyboardButton(text='Double Degree in Mechanical Engineering and Electrical Engineering', url='https://esingenieria.uca.es/docencia/grados/gimgie/calendarios-y-convocatorias/')],
             [InlineKeyboardButton(text='Double Degree in Mechanical Engineering and Engineering Industrial Design and Product Development Engineering', url='https://esingenieria.uca.es/docencia/grados/gimgididp/calendarios-y-convocatorias/')],
-            [InlineKeyboardButton(text='Go back', callback_data='student_english_go_back')]
+            [InlineKeyboardButton(text='Back', callback_data='student_english_go_back')]
         ])
     ) 
