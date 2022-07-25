@@ -1,11 +1,4 @@
-
-
-from telegram.ext import Updater, CommandHandler, ConversationHandler, CallbackQueryHandler, MessageHandler, Filters, conversationhandler
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
-
-import general
-
-
 
 # Español
 
@@ -262,7 +255,7 @@ def callback_practicas_extracurriculares_requisitos(update, context):
     query = update.callback_query
     query.answer()
     query.edit_message_text( 
-        text = 'Para solicitar las prácticas debes estar matriculado durante el curso de realización de las prácticas en una titulación oficial,  tener superado, al menos, el 50% de los créditos de la titulación que cursa y tener su inscripción correcta en el portal de prácticas ICARO.',
+        text = 'Para solicitar las prácticas debes estar matriculado durante el curso de realización de las prácticas en una titulación oficial, tener superado, al menos, el 50% de los créditos de la titulación que cursa y tener su inscripción correcta en el portal de prácticas ICARO.',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Volver', callback_data='inicio_practicas_extracurriculares')]
         ])
@@ -354,8 +347,8 @@ def practice_curriculares_start_english(update, context):
         text = 'Curricular internships are academic activities that form part of the study plan and are carried out in external companies or at the university itself; the training project is defined by each degree programme. They can be compulsory or optional',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='What is the minimum/maximum duration?', callback_data='practice_curriculares_duracion')],
-            [InlineKeyboardButton(text='Are there any costs and/or retribution for the student?', callback_data='practice_curriculares_retribucion')],
-            [InlineKeyboardButton(text='Is there any financial or other assistance?', callback_data='practice_curriculares_ayuda_economica')],
+            [InlineKeyboardButton(text='Are there any costs and/or remuneration for the student?', callback_data='practice_curriculares_retribucion')],
+            [InlineKeyboardButton(text='Is there any financial or other assistance available?', callback_data='practice_curriculares_ayuda_economica')],
             [InlineKeyboardButton(text='Do I have to do them in the same place where I study?', callback_data='practice_curriculares_localidad')],
             [InlineKeyboardButton(text='Can I do more than one curricular internship?', callback_data='practice_curriculares_numero')],
             [InlineKeyboardButton(text='Where should I register for a curricular internship?', callback_data='practice_curriculares_periodo')],
@@ -394,7 +387,7 @@ def callback_practice_curriculares_ayuda_economica(update, context):
     query = update.callback_query
     query.answer()
     query.edit_message_text( 
-        text = 'The Vice-rectorate for Students and Employment announces every academic year a transport aid for students on curricular internships. We leave you the direct link where they will be published (when they come out)',
+        text = 'The Vice-rectorate for Students and Employment announces each academic year some transport aid for students on curricular internships. We leave you the direct link where they will be published (when they come out)',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Portal', url='https://atencionalumnado.uca.es/becas-practicas-curriculares/')],
             [InlineKeyboardButton(text='Back', callback_data='practice_curriculares_start_english')]
@@ -406,7 +399,7 @@ def callback_practice_curriculares_localidad(update, context):
     query = update.callback_query
     query.answer()
     query.edit_message_text( 
-        text = 'Not necessarily. You simply need the company/entity where you want to do the internship to have an agreement with the University of Cadiz (if it doesn\'t, you can propose it to the company. It is a relatively simple procedure that usually takes about 1 month)',
+        text = 'Not necessarily. You simply need the company/entity where you want to do the internship to have an agreement with the University of Cadiz (if it doesn\'t have one, you can propose to the company to make one. It is a relatively simple procedure that usually takes about 1 month)',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Back', callback_data='practice_curriculares_start_english')]
         ])
@@ -453,7 +446,7 @@ def callback_practice_curriculares_diferencias(update, context):
     query.answer()
     query.edit_message_text( 
         text = 'Extracurricular placements have exactly the same purpose as curricular placements, but with the following main differences:'
-                '\n\nCurriculares: They have a cost for the student, the duration depends on what is included in the syllabus of the degree and will range between 6-12 weeks (without the option of an extension), without the option of being paid and are included in the syllabus'
+                '\n\nCurriculares: They have a cost for the student, the duration depends on what is included in the syllabus of the degree and will range between 6-12 weeks (without an extension option), without the option of being paid and are included in the syllabus'
                 '\n\nExtracurriculares: No cost for the student, the duration depends on what the company offers and will be a maximum of 6 months (extendable for a further 3 months), with the possibility of being paid and they are not included in the Study Plan (so they would have to be validated, provided that this option is possible and the internship meets the requirements of the Centre/Faculty)',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Back', callback_data='practice_curriculares_start_english')]
@@ -471,7 +464,7 @@ def practice_extracurriculares_start_english(update, context):
         text = 'Extracurricular placements are those that students may undertake on a voluntary basis during their training period and which, although they have the same aims as curricular placements, do not form part of the corresponding syllabus. However, they will be included in the European Diploma Supplement (ECTS) in accordance with the regulations in force',
         reply_markup = InlineKeyboardMarkup([
                 [InlineKeyboardButton(text='What is the minimum/maximum duration?', callback_data='practice_extracurriculares_duracion')],
-                [InlineKeyboardButton(text='Are there any costs and/or retribution for the student?', callback_data='practice_extracurriculares_retribucion')],
+                [InlineKeyboardButton(text='Are there any costs and/or remuneration for the student?', callback_data='practice_extracurriculares_retribucion')],
                 [InlineKeyboardButton(text='Is there any financial or other assistance?', callback_data='practice_extracurriculares_ayuda_economica')],
                 [InlineKeyboardButton(text='What is the PRAEM grant of the Junta de Andalucia?', callback_data='practice_extracurriculares_beca')],
                 [InlineKeyboardButton(text='How/where can I find internships of this kind?', callback_data='practice_extracurriculares_encontrar')],
@@ -531,7 +524,7 @@ def callback_practice_extracurriculares_beca(update, context):
     query = update.callback_query
     query.answer()
     query.edit_message_text( 
-        text = 'It is a programme financed by the Junta de Andalucía and managed by the UCA whose objective is to promote work placement through internships in companies for university students. It has an economic endowment of 180 €/month paid by the university, apart, the company is obliged to pay a minimum of another 180 €/month to the student',
+        text = 'It is a programme financed by the Junta de Andalucía and managed by the UCA whose objective is to promote work placement through internships in companies for university students. It has an economic endowment of 180 € per month paid by the university, with, the company being obliged to pay a minimum of another 180 € per month to the student',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Back', callback_data='practice_extracurriculares_start_english')]
         ])
@@ -544,7 +537,7 @@ def callback_practice_extracurriculares_encontrar(update, context):
     query = update.callback_query
     query.answer()
     query.edit_message_text( 
-        text = 'This type of internship is managed through the Icaro platform, where applicants for extracurricular internships must be registered. On this portal you can consult the daily offer of extracurricular placements',
+        text = 'This type of internship is managed through the ICARO platform, where applicants for extracurricular internships must be registered. On this portal you can consult the daily offer of extracurricular placements',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Portal', url='https://icaro.ual.es/')],
             [InlineKeyboardButton(text='Back', callback_data='practice_extracurriculares_start_english')]
@@ -570,7 +563,7 @@ def callback_practice_extracurriculares_numero(update, context):
     query = update.callback_query
     query.answer()
     query.edit_message_text( 
-        text = 'Yes, as long as it does not exceed 6 months per academic year. The prerequisite for extracurricular placements is to be enrolled at the university for a credit',
+        text = 'Yes, as long as it does not exceed 6 months per academic year. The prerequisite for extracurricular placements is to be permanently registered at the university for a credit',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Back', callback_data='practice_extracurriculares_start_english')]
         ])
@@ -619,7 +612,7 @@ def callback_practice_extracurriculares_recuperar_dias(update, context):
     query = update.callback_query
     query.answer()
     query.edit_message_text( 
-        text = 'Attendance at mid-term and final exams, if excused, will not be a make-up day. As with academic tutorials',
+        text = 'Attendance at mid-term and final exams, if justified, will not have to be a made up the same as with academic tutorials',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Back', callback_data='practice_extracurriculares_start_english')]
         ])
@@ -642,7 +635,7 @@ def callback_practice_extracurriculares_diferencias(update, context):
     query.answer()
     query.edit_message_text( 
         text = 'Extracurricular placements have exactly the same purpose as curricular placements, but with the following main differences:'
-                '\n\nCurriculares: They have a cost for the student, the duration depends on what is included in the syllabus of the degree and will range between 6-12 weeks (without the option of an extension), without the option of being paid and are included in the syllabus'
+                '\n\nCurriculares: They have a cost for the student, the duration depends on what is included in the syllabus of the degree and will range between 6-12 weeks (without an extension option), without the option of being paid and are included in the syllabus'
                 '\n\nExtracurriculares: No cost for the student, the duration depends on what the company offers and will be a maximum of 6 months (extendable for a further 3 months), with the possibility of being paid and are not included in the Syllabus (so they would have to be validated, provided that this option is possible and the internship meets the requirements of the Centre/Faculty)',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Back', callback_data='practice_extracurriculares_start_english')]

@@ -1,8 +1,4 @@
-from telegram.ext import Updater, CommandHandler, ConversationHandler, CallbackQueryHandler, MessageHandler, Filters, conversationhandler
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
-
-
-import general
 
 def start_llamamiento_especial(update, context):
     query = update.callback_query
@@ -60,7 +56,7 @@ def callback_llamamiento_especial_presentarmeSinFormulario(update, context):
     query = update.callback_query
     query.answer()
     query.edit_message_text(
-        text = 'No es lo recomendado pero si te coincide con otro examen, sí puedes presentarte si vas con el justificante firmado.',
+        text = 'No es lo recomendado, pero si te coincide con otro examen, sí puedes presentarte si vas con el justificante firmado.',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Volver', callback_data='inicio_llamamiento_especial')]
         ])
@@ -97,7 +93,7 @@ def special_call_start_english(update, context):
         text = 'It is a date for examining a subject that coincides with another in the official calendar',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='How and when can I apply?', callback_data='special_call_periodo_english')],
-            [InlineKeyboardButton(text='When and which exams will be called?', callback_data='special_call_examenes_english')],
+            [InlineKeyboardButton(text='When and which exams will be sat?', callback_data='special_call_examenes_english')],
             [InlineKeyboardButton(text='What do I have to bring with me on the day of the exam?', callback_data='special_call_requisitos_english')],
             [InlineKeyboardButton(text='Can I sit the exam even if I have not filled in the form?', callback_data='special_call_presentarmeSinFormulario_english')],
             [InlineKeyboardButton(text='I am on the list but in the end, I have decided to take only the exam for the ordinary exam, can I do it?', callback_data='special_call_ordinaria_english')],
@@ -111,7 +107,7 @@ def callback_special_call_periodo_english(update, context):
     query = update.callback_query
     query.answer()
     query.edit_message_text(
-        text = 'Some time after the exam calendar is published, you will receive a TAVIRA (to your official mail) to fill in a form. In the form you will have to mark all the subjects that coincide with yours and that you want to take',
+        text = 'Some time after the exam calendar is published, you will receive a TAVIRA (to your official mail) to fill in a form. On the form you will have to mark all the subjects that coincide with yours and that you want to take',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Back', callback_data='special_call_start_english')]
         ])

@@ -1,8 +1,4 @@
-from telegram.ext import Updater, CommandHandler, ConversationHandler, CallbackQueryHandler, MessageHandler, Filters, conversationhandler
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
-
-import general
-
 
 def start_movilidad(update, context):
     query = update.callback_query

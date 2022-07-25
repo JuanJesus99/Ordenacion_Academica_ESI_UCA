@@ -1,9 +1,4 @@
-
-from telegram.ext import Updater, CommandHandler, ConversationHandler, CallbackQueryHandler, MessageHandler, Filters, conversationhandler
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
-
-import general
-
 
 def start_conv_diciembre(update, context):
     query = update.callback_query
@@ -32,7 +27,7 @@ def callback_conv_diciembre_requisitos(update, context):
     query = update.callback_query
     query.answer()
     query.edit_message_text(
-        text = 'TÍTULOS DE GRADOS: \n\nPodrán solicitarla,  aquellos alumnos a los que reste para finalizar sus estudios 40 créditos o menos de la carga lectiva de la titulación o alternativamente, le resten un máximo de 3 asignaturas para terminar dichos estudios, aunque éstas en su conjunto superen los créditos indicados (incluido el TFG)'
+        text = 'TÍTULOS DE GRADOS: \n\nPodrán solicitarla, aquellos alumnos a los que reste para finalizar sus estudios 40 créditos o menos de la carga lectiva de la titulación o alternativamente, le resten un máximo de 3 asignaturas para terminar dichos estudios, aunque éstas en su conjunto superen los créditos indicados (incluido el TFG)'
                 '\n\n\n\nTÍTULOS DE MÁSTER: \n\nPodrán solicitarla aquellos alumnos que le reste para finalizar 9 créditos o menos de la carga lectiva de la titulación (excluido el TFM)',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Volver', callback_data='inicio_conv_diciembre')]

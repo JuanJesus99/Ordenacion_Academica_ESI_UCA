@@ -1,8 +1,4 @@
-from telegram.ext import Updater, CommandHandler, ConversationHandler, CallbackQueryHandler, MessageHandler, Filters, conversationhandler
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
-
-import general
-
 
 def start_compensacion(update, context):
 
@@ -214,7 +210,7 @@ def callback_compensation_evaluation_nonqualifying_requisitos_english(update, co
     query = update.callback_query
     query.answer()
     query.edit_message_text(
-        text = 'DEGREE DEGREES (ALL requirements must be fulfilled)'
+        text = 'DEGREE TITLES (ALL requirements must be fulfilled)'
                 '\n\n\t\t Undergraduate students must have passed at least 50% of the credits of their degree at the University of Cadiz.'
                 '\n\n\t\t Students must have only one yearly or two semester subjects pending to finish their degree (this does not include the TFG, internships, rotations, practicum, on-boarding periods or similar).'
                 '\n\n\n\nMASTER\'S DEGREES:'
@@ -228,7 +224,7 @@ def callback_compensation_evaluation_nonqualifying_requisitos_especificos_englis
     query = update.callback_query
     query.answer()
     query.edit_message_text(
-        text = 'Fulfil all of the following requirements:'
+        text = '1st. Fulfil all of the following requirements:'
                 '\n\n\t\t 1. To have applied at least four times, in the last four years if it is a Bachelor\'s Degree, and in the last two years if it is a Master\'s Degree.'
                 '\n\n\t\t 2. To have obtained a mark of at least 3.0 in the years referred to in section a.'
                 '\n\n\t\t 3. The average mark of the two best marks obtained, in the courses referred to in section a, in the subject for which compensation is requested is 2.0'
@@ -237,8 +233,8 @@ def callback_compensation_evaluation_nonqualifying_requisitos_especificos_englis
                 '\n\t\t\t\t\t\t Bachelor\'s degrees in Arts and Humanities, Social and Legal Sciences and Health Sciences: 6.5 (six and a half) '
                 '\n\t\t\t\t\t\t Bachelor\'s degrees in Science and Engineering or Architecture: 6 (six).'
 
-                '\n\n\n2º. Undergraduate students who have obtained TWO grades equal to or higher than 4.0.'
-                '\n\n\n3º. Students who are at least twice among the top 25% of those with the best marks in the February, June or September exams in academic years where the subject applied for has a performance rate of less than 25%',
+                '\n\n\n2nd. Undergraduate students who have obtained TWO grades equal to or higher than 4.0.'
+                '\n\n\n3rd. Students who are at least twice among the top 25% of those with the best marks in the February, June or September exams in academic years where the subject applied for has a performance rate of less than 25%',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='Back', callback_data='compensation_evaluation_nonqualifying_english')]
         ])

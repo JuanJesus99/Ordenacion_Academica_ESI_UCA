@@ -1,8 +1,4 @@
-
-from telegram.ext import Updater, CommandHandler, ConversationHandler, CallbackQueryHandler, MessageHandler, Filters, conversationhandler
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
-
-import general
 
 def start_evaluacion_global(update, context):
     
@@ -34,7 +30,7 @@ def global_assessment_start_english(update, context):
     query = update.callback_query
     query.answer()
     query.edit_message_text(
-        text = 'This is an evaluation format in which the student waives the method established in the subject record and takes a set of tests established by the teaching team of the subject. This method cannot be requested for the first sitting of the course',
+        text = 'This is an evaluation format in which the student waives the method established in the subject record and takes a set of tests established by the teaching team of the subject. This method cannot be requested for the first part of the course',
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton(text='How and when can I apply for it?', callback_data='global_assessment_periodo_english')],
             [InlineKeyboardButton(text='Back', callback_data='student_english_go_back')]
