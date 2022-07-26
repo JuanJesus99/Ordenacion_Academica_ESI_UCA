@@ -1,4 +1,3 @@
-import webbrowser
 from telegram.ext import Updater, CommandHandler, ConversationHandler, CallbackQueryHandler, MessageHandler, Filters, conversationhandler
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
@@ -106,7 +105,6 @@ def second_menu_english(update, context):
 def menu_estudiante(update, context):
     
     # Horarios
-    # dp.add_handler(CommandHandler('horarios', horarios.start_horarios))
     dp.add_handler(CallbackQueryHandler(pattern='student_timetable', callback=timetable.student_timetable))
     
     
@@ -115,7 +113,6 @@ def menu_estudiante(update, context):
     
     
     # TFG
-    # dp.add_handler(CommandHandler('tfg', tfg.start_tfg))
     dp.add_handler(CallbackQueryHandler(pattern='inicio_tfg', callback=tfg.start_tfg))
     dp.add_handler(CallbackQueryHandler(pattern='tfg_reglamento', callback=tfg.callback_tfg_reglamento))
     dp.add_handler(CallbackQueryHandler(pattern='tfg_fechas_reuniones', callback=tfg.callback_tfg_fechas_reuniones))
@@ -126,23 +123,15 @@ def menu_estudiante(update, context):
     dp.add_handler(CallbackQueryHandler(pattern='get_tfg_portada_externa', callback=tfg.get_tfg_portada_externa))
     dp.add_handler(CallbackQueryHandler(pattern='get_tfg_primera_interna', callback=tfg.get_tfg_primera_interna))
     dp.add_handler(CallbackQueryHandler(pattern='get_tfg_segunda_interna', callback=tfg.get_tfg_segunda_interna))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/01', callback=tfg.get_TFG01))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/02', callback=tfg.get_TFG02))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/03', callback=tfg.get_TFG03))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/04', callback=tfg.get_TFG04))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/05', callback=tfg.get_TFG05))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/06', callback=tfg.get_TFG06))
     
     
 
     # Evaluación global
-    # dp.add_handler(CommandHandler('evaluacion_global', evaluacion_global.start_evaluacion_global))
     dp.add_handler(CallbackQueryHandler(pattern='inicio_evaluacion_global', callback=global_evaluation.start_evaluacion_global))
     dp.add_handler(CallbackQueryHandler(pattern='evaluacion_global_periodo', callback=global_evaluation.callback_evaluacion_global_periodo))
 
 
     #Llamamiento Especial
-    # dp.add_handler(CommandHandler('llamamiento_especial', llamamiento_especial.start_llamamiento_especial))
     dp.add_handler(CallbackQueryHandler(pattern='inicio_llamamiento_especial', callback=special_call.start_llamamiento_especial))
     dp.add_handler(CallbackQueryHandler(pattern='llamamiento_especial_periodo', callback=special_call.callback_llamamiento_especial_periodo))
     dp.add_handler(CallbackQueryHandler(pattern='llamamiento_especial_requisitos', callback=special_call.callback_llamamiento_especial_requisitos))
@@ -152,25 +141,19 @@ def menu_estudiante(update, context):
     dp.add_handler(CallbackQueryHandler(pattern='llamamiento_especial_sino_coincide', callback=special_call.callback_llamamiento_especial_sino_coincide))
 
     # Convocatoria Diciembre
-    # dp.add_handler(CommandHandler('convocatoria_diciembre', convocatoria_diciembre.start_conv_diciembre))
     dp.add_handler(CallbackQueryHandler(pattern='inicio_conv_diciembre', callback=december_exams.start_conv_diciembre))
     dp.add_handler(CallbackQueryHandler(pattern='conv_diciembre_periodo', callback=december_exams.callback_conv_diciembre_periodo))
     dp.add_handler(CallbackQueryHandler(pattern='conv_diciembre_requisitos', callback=december_exams.callback_conv_diciembre_requisitos))
 
 
     # Asignacion de grupos
-    # dp.add_handler(CommandHandler('asignacion_grupos', asignacion_grupos.start_asignacion_grupos))
     dp.add_handler(CallbackQueryHandler(pattern='inicio_group_assignment', callback=group_assignment.start_group_assignment))
     
     
     # Practicas
-    # dp.add_handler(CallbackQueryHandler(pattern='practicas_convalidar', callback=practice.callback_practicas_convalidar))
-    # dp.add_handler(CallbackQueryHandler(pattern='practicas_diferencias', callback=practice.callback_practicas_diferencias))
-    
     dp.add_handler(CallbackQueryHandler(pattern='start_practice', callback=practice.start_practicas))
       
     # Practicas curriculares
-    # dp.add_handler(CommandHandler('practicas_curriculares', practicas.start_practicas_curriculares))
     dp.add_handler(CallbackQueryHandler(pattern='inicio_practicas_curriculares', callback=practice.start_practicas_curriculares))
     dp.add_handler(CallbackQueryHandler(pattern='practicas_curriculares_duracion', callback=practice.callback_practicas_curriculares_duracion))
     dp.add_handler(CallbackQueryHandler(pattern='practicas_curriculares_retribucion', callback=practice.callback_practicas_curriculares_retribucion))
@@ -182,7 +165,6 @@ def menu_estudiante(update, context):
     dp.add_handler(CallbackQueryHandler(pattern='practicas_curriculares_diferencias', callback=practice.callback_practicas_curriculares_diferencias))
       
     # Practicas extracurriculares
-    # dp.add_handler(CommandHandler('practicas_extracurriculares', practicas.start_practicas_extracurriculares))
     dp.add_handler(CallbackQueryHandler(pattern='inicio_practicas_extracurriculares', callback=practice.start_practicas_extracurriculares))
     dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_duracion', callback=practice.callback_practicas_extracurriculares_duracion))
     dp.add_handler(CallbackQueryHandler(pattern='practicas_extracurriculares_retribucion', callback=practice.callback_practicas_extracurriculares_retribucion))
@@ -220,12 +202,8 @@ def menu_estudiante(update, context):
     dp.add_handler(CallbackQueryHandler(pattern='compensacion_requisitos', callback=compensation_evaluation.callback_compensacion_requisitos))
     dp.add_handler(CallbackQueryHandler(pattern='compensacion_req_especificos', callback=compensation_evaluation.callback_compensacion_req_especificos))
     
-    # dp.add_handler(CallbackQueryHandler(pattern='student_spanish_compensacion_go_back', callback=compensation_evaluation.callback_compensacion_req_especificos))
-    
-    
     # Volver atras
     dp.add_handler(CallbackQueryHandler(pattern='student_spanish_go_back', callback=menu_estudiante))
-    
     dp.add_handler(CallbackQueryHandler(pattern='student_menu_spanish_go_back', callback=second_menu_spanish))
     
     
@@ -266,12 +244,6 @@ def student_menu_english(update, context):
     dp.add_handler(CallbackQueryHandler(pattern='get_tfg_portada_externa', callback=tfg.get_tfg_portada_externa))
     dp.add_handler(CallbackQueryHandler(pattern='get_tfg_primera_interna', callback=tfg.get_tfg_primera_interna))
     dp.add_handler(CallbackQueryHandler(pattern='get_tfg_segunda_interna', callback=tfg.get_tfg_segunda_interna))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/01', callback=tfg.get_TFG01))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/02', callback=tfg.get_TFG02))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/03', callback=tfg.get_TFG03))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/04', callback=tfg.get_TFG04))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/05', callback=tfg.get_TFG05))
-    dp.add_handler(CallbackQueryHandler(pattern='get_TFG/06', callback=tfg.get_TFG06))
     
 
     # Evaluación global
@@ -313,7 +285,6 @@ def student_menu_english(update, context):
     dp.add_handler(CallbackQueryHandler(pattern='practice_curriculares_diferencias', callback=practice.callback_practice_curriculares_diferencias))
       
     # Practicas extracurriculares
-    # dp.add_handler(CommandHandler('practicas_extracurriculares', practicas.start_practicas_extracurriculares))
     dp.add_handler(CallbackQueryHandler(pattern='practice_extracurriculares_start_english', callback=practice.practice_extracurriculares_start_english))
     dp.add_handler(CallbackQueryHandler(pattern='practice_extracurriculares_duracion', callback=practice.callback_practice_extracurriculares_duracion))
     dp.add_handler(CallbackQueryHandler(pattern='practice_extracurriculares_retribucion', callback=practice.callback_practice_extracurriculares_retribucion))
@@ -328,8 +299,6 @@ def student_menu_english(update, context):
     dp.add_handler(CallbackQueryHandler(pattern='practice_extracurriculares_recuperar_dias', callback=practice.callback_practice_extracurriculares_recuperar_dias))
     dp.add_handler(CallbackQueryHandler(pattern='practice_extracurriculares_convalidar', callback=practice.callback_practice_extracurriculares_convalidar))
     dp.add_handler(CallbackQueryHandler(pattern='practice_extracurriculares_diferencias', callback=practice.callback_practice_extracurriculares_diferencias))
-    
-    
     
     # Movilidad
     dp.add_handler(CallbackQueryHandler(pattern='mobility_start_english', callback=movilidad.mobility_start_english))
@@ -509,8 +478,6 @@ if __name__ == '__main__':
     updater = Updater(token='2049537211:AAERyXIxQUMicwINmZqy1tAXai-G1EgJtKY', use_context=True)
 
     dp = updater.dispatcher
-    
-    # dp.add_handler(MessageHandler(Filters.text, first_menu))
     
     dp.add_handler(CommandHandler('start', first_menu))
     

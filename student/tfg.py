@@ -6,11 +6,11 @@ def start_tfg(update, context):
     query.edit_message_text(
         text = 'Es el trabajo que hay que realizar para terminar la carrera',
         reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton(text='Reglamento de TFG/M y modelos', callback_data='tfg_reglamento')],
+            [InlineKeyboardButton(text='Reglamento de TFG/M', callback_data='tfg_reglamento')],
             [InlineKeyboardButton(text='Calendario de fechas', url='https://esingenieria.uca.es/wp-content/uploads/2021/09/Calendario-TFGM-de-la-Escuela-Superior-de-Ingenieria-de-la-Universidad-de-Cadiz.pdf')],
             [InlineKeyboardButton(text='Fechas reuniones ordinarias comisión de TFG/M', callback_data='tfg_fechas_reuniones')],
             [InlineKeyboardButton(text='Períodos de defensa aprobados por la comisión', callback_data='tfg_periodos_defensa')],
-            [InlineKeyboardButton(text='Enlace a la página web de la universidad', url='https://esingenieria.uca.es/docencia/tfg-m/')],
+            [InlineKeyboardButton(text='Enlace a la página web de la universidad', url='https://esingenieria.uca.es/docencia/grados/tfg/')],
             [InlineKeyboardButton(text='Volver', callback_data='student_spanish_go_back')]
         ])
     )
@@ -27,6 +27,7 @@ def callback_tfg_reglamento(update, context):
                 [InlineKeyboardButton(text='Portada externa', callback_data='get_tfg_portada_externa')],
                 [InlineKeyboardButton(text='Primera interna', callback_data='get_tfg_primera_interna')],
                 [InlineKeyboardButton(text='Segunda interna', callback_data='get_tfg_segunda_interna')],
+                [InlineKeyboardButton(text='Enlace a la página web de gestión', url='https://tfgm.uca.es/')],
                 [InlineKeyboardButton(text='Volver', callback_data='inicio_tfg')]
             ])
         )
@@ -129,11 +130,11 @@ def tfg_start_english(update, context):
     query.edit_message_text(
         text = 'This is the work that has to be done to finish the degree',
         reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton(text='TFG/M regulations and models', callback_data='tfg_reglamento_english')],
+            [InlineKeyboardButton(text='TFG/M regulations', callback_data='tfg_reglamento_english')],
             [InlineKeyboardButton(text='Schedule of dates', url='https://esingenieria.uca.es/wp-content/uploads/2021/09/Calendario-TFGM-de-la-Escuela-Superior-de-Ingenieria-de-la-Universidad-de-Cadiz.pdf')],
             [InlineKeyboardButton(text='Dates of ordinary TFG committee meetings', callback_data='tfg_fechas_reuniones_english')],
             [InlineKeyboardButton(text='Defense periods approved by the committee', callback_data='tfg_periodos_defensa_english')],
-            [InlineKeyboardButton(text='Link to the university website', url='https://esingenieria.uca.es/docencia/tfg-m/')],
+            [InlineKeyboardButton(text='Link to the university website', url='https://esingenieria.uca.es/docencia/grados/tfg/')],
             [InlineKeyboardButton(text='Back', callback_data='student_english_go_back')]
         ])
     )
@@ -149,6 +150,7 @@ def callback_tfg_reglamento_english(update, context):
                 [InlineKeyboardButton(text='External cover page', callback_data='get_tfg_portada_externa')],
                 [InlineKeyboardButton(text='First internal', callback_data='get_tfg_primera_interna')],
                 [InlineKeyboardButton(text='Second internal', callback_data='get_tfg_segunda_interna')],
+                [InlineKeyboardButton(text='Link to management website', url='https://tfgm.uca.es/')],
                 [InlineKeyboardButton(text='Back', callback_data='tfg_start_english')]
             ])
         )
