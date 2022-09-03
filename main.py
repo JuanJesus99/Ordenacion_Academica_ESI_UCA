@@ -340,7 +340,7 @@ def student_menu_english(update, context):
             [InlineKeyboardButton(text='Internships', callback_data='practice_start_english'), InlineKeyboardButton(text='Mobility', callback_data='mobility_start_english')],
             [InlineKeyboardButton(text='Collaborating students', callback_data='collaborating_students_start_english'), InlineKeyboardButton(text='Assessment by compensation', callback_data='compensation_evaluation_start_english')],
             [InlineKeyboardButton(text='SIRE', url='https://sire.uca.es/'), InlineKeyboardButton(text='Academic records', url='https://portalservicios.uca.es/ServiciosApp/')],
-            [InlineKeyboardButton(text='ESI Academic Planning website', url='https://esingenieria.uca.es/ordenacion-estudiantes/')],
+            [InlineKeyboardButton(text='Academic Affairs Website', url='https://esingenieria.uca.es/ordenacion-estudiantes/')],
             [InlineKeyboardButton(text='Back', callback_data='student_menu_english_go_back')]
         ]),
         parse_mode='Markdown'
@@ -397,10 +397,10 @@ def PDI_menu_english(update, context):
             [InlineKeyboardButton(text='ESI news', url='https://esingenieria.uca.es/noticia/')],
             [InlineKeyboardButton(text='Timetables', callback_data='pdi_timetable_english'), InlineKeyboardButton(text='Exam calendar', callback_data='pdi_exam_calendar_english')],
             [InlineKeyboardButton(text='Academic Calendar', url='https://esingenieria.uca.es/wp-content/uploads/2021/05/Calendario-Academico-2021-22-ESI.pdf')],
-            [InlineKeyboardButton(text='Teacher  Incident Form', url='https://esingenieria.uca.es/ordenacion-pdi/'), InlineKeyboardButton(text='Timetables by areas', url='https://esingenieria.uca.es/ordenacion-pdi/')],
-            [InlineKeyboardButton(text='Guide to teaching programmes', url='https://esingenieria.uca.es/wp-content/uploads/2021/06/Indicaciones_Programas_Docentes_ESI%20_v2.pdf'), InlineKeyboardButton(text='Access to GOA', url='https://goa.uca.es/')],
+            [InlineKeyboardButton(text='Lecture Issue Form', url='https://esingenieria.uca.es/ordenacion-pdi/'), InlineKeyboardButton(text='Timetables by areas', url='https://esingenieria.uca.es/ordenacion-pdi/')],
+            [InlineKeyboardButton(text='Courses Syllabus', url='https://esingenieria.uca.es/wp-content/uploads/2021/06/Indicaciones_Programas_Docentes_ESI%20_v2.pdf'), InlineKeyboardButton(text='Access to GOA', url='https://goa.uca.es/')],
             [InlineKeyboardButton(text='Access to the Information System', url='https://sistemadeinformacion.uca.es/'), InlineKeyboardButton(text='SIRE', url='https://sire.uca.es/')],
-            [InlineKeyboardButton(text='ESI Academic Planning website', url='https://esingenieria.uca.es/ordenacion-pdi/')],
+            [InlineKeyboardButton(text='Academic Affairs Website', url='https://esingenieria.uca.es/ordenacion-pdi/')],
             [InlineKeyboardButton(text='Back', callback_data='PDI_menu_english_go_back')]
         ]),
         parse_mode='Markdown'
@@ -464,7 +464,7 @@ def PAS_menu_english(update, context):
             [InlineKeyboardButton(text='Infrastructure CAU', url='https://cau-infraestructuras.uca.es/cau/index.do')],
             [InlineKeyboardButton(text='Repairs CAU', url='https://cau-infraestructuras.uca.es/cau/grupoServicios.do?id=M01'),InlineKeyboardButton(text='Air conditioning CAU', url='https://cau-infraestructuras.uca.es/cau/grupoServicios.do?id=M07')],
             [InlineKeyboardButton(text='Directory', url='https://directorio.uca.es/'), InlineKeyboardButton(text='SIRE', url='https://sire.uca.es/')],
-            [InlineKeyboardButton(text='ESI Academic Planning website', url='https://esingenieria.uca.es/ordenacion-pdi/')],
+            [InlineKeyboardButton(text='Academic Affairs Website', url='https://esingenieria.uca.es/ordenacion-pdi/')],
             [InlineKeyboardButton(text='Back', callback_data='PAS_menu_english_go_back')]
         ]),
         parse_mode='Markdown'
@@ -475,7 +475,7 @@ def PAS_menu_english(update, context):
 
 if __name__ == '__main__':
     
-    updater = Updater(token='2049537211:AAERyXIxQUMicwINmZqy1tAXai-G1EgJtKY', use_context=True)
+    updater = Updater(token='5162572024:AAEp-8Id5VJSfBLW_BteY5EEP9nCcyEF2Xs', use_context=True)
 
     dp = updater.dispatcher
     

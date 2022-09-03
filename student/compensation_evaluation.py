@@ -101,7 +101,7 @@ def callback_compensacion_req_especificos(update, context):
     query.edit_message_text(
         text = '1º. Cumplir todos los requisitos siguientes:'
                 '\n\n\t\t 1. Que se haya presentado al menos cuatro veces, en los cuatro últimos cursos si es un Grado, y en los dos últimos cursos si se trata de estudios de Máster.'
-                '\n\n\t\t 2. Que haya obtenido una nota de al menos un 3,0 en los años referidos en el apartado a).'
+                '\n\n\t\t 2. Que haya obtenido una nota de al menos un 3,0 en los años referidos en el apartado 1).'
                 '\n\n\t\t 3. Que la nota media de las dos mejores calificaciones obtenidas, en los cursos referidos en el apartado a), en la asignatura cuya compensación se solicita sea de un 2,0'
                 '\n\n\t\t 4. Que la nota media de su expediente sea:'
                 '\n\t\t\t\t\t\t  Máster: 7,5 (siete y medio)'
@@ -226,7 +226,7 @@ def callback_compensation_evaluation_nonqualifying_requisitos_especificos_englis
     query.edit_message_text(
         text = '1st. Fulfil all of the following requirements:'
                 '\n\n\t\t 1. To have applied at least four times, in the last four years if it is a Bachelor\'s Degree, and in the last two years if it is a Master\'s Degree.'
-                '\n\n\t\t 2. To have obtained a mark of at least 3.0 in the years referred to in section a.'
+                '\n\n\t\t 2. To have obtained a mark of at least 3.0 in the years referred to in section 1.'
                 '\n\n\t\t 3. The average mark of the two best marks obtained, in the courses referred to in section a, in the subject for which compensation is requested is 2.0'
                 '\n\n\t\t 4. That the average mark of the student\'s transcript is:'
                 '\n\t\t\t\t\t\t Master\'s degree: 7.5 (seven and a half)'
